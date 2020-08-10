@@ -1,0 +1,116 @@
+{
+    "extends": [
+        "airbnb"
+    ],
+    "parser": "babel-eslint",
+    "overrides": [
+        {
+            "files": [
+                "*.js"
+            ],
+            "rules": {
+                "indent": "off"
+            }
+        }
+    ],
+    "rules": {
+        "arrow-body-style": [
+            0,
+            "as-needed"
+        ],
+        "arrow-parens": [
+            2,
+            "always"
+        ],
+        "eqeqeq": 2,
+        "global-require": 0,
+        "indent": [
+            2,
+            4
+        ],
+        "jsx-quotes": [
+            2,
+            "prefer-single"
+        ],
+        "linebreak-style": 0,
+        "max-len": [
+            2,
+            200
+        ],
+        "max-lines": [
+            2,
+            300
+        ],
+        "new-cap": 0,
+        "no-console": 2,
+        "no-else-return": [
+            2,
+            {
+                "allowElseIf": false
+            }
+        ],
+        "no-empty-function": [
+            2,
+            {
+                "allow": [
+                    "constructors"
+                ]
+            }
+        ],
+        "no-extra-semi": 2,
+        "no-plusplus": 0,
+        "no-restricted-globals": 1,
+        "no-restricted-syntax": 0,
+        "no-return-assign": 0,
+        "no-shadow": 1,
+        "no-undef": 1,
+        "no-underscore-dangle": 0,
+        "no-use-before-define": 0,
+        "no-useless-constructor": 2,
+        "padded-blocks": 0,
+        "radix": 0,
+        "semi": 2,
+        "semi-spacing": 2,
+        "semi-style": 2,
+        "import/extensioms": 0,
+        "import/no-cycle": 0,
+        "import/no-useless-path-segments": 0,
+        "react/forbid-prop-types": 0,
+        "react/jsx-filename-extension": 0,
+        "react/jsx-fragments": 0,
+        "react/jsx-indent": [
+            2,
+            4
+        ],
+        "react/jsx-indent-props": [
+            2,
+            4
+        ],
+        "react/jsx-no-bind": [
+            2,
+            {
+                "allowArrowFunctions": true
+            }
+        ],
+        "react/no-unused-state": 1,
+        "react/prop-types": 0,
+        "react/jsx-one-expression-per-line": 1,
+        "object-curly-newline": [
+            2,
+            {
+                "ImportDeclaration": {
+                    "multiline": true
+                },
+                "ExportDeclaration": {
+                    "multiline": true
+                }
+            }
+        ]
+    },
+    "plugins": [
+        "html",
+        "import",
+        "jsx-a11y",
+        "react"
+    ]
+}
