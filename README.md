@@ -23,3 +23,8 @@ However, we made some changes. Don't worry, lint will warn you :)
 ```
 npm run lint
 ```
+
+### Original Project
+This is a mobile adaptation of Phellipe project with ReactJS!
+Check it out (Thanks Phellipe!)<br/>
+https://github.com/phellipeperin/afk-arena-v2
