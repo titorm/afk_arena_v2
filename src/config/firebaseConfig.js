@@ -5,7 +5,7 @@ const config = {
     projectId: 'afk-arena-v2',
     storageBucket: 'afk-arena-v2.appspot.com',
     messagingSenderId: '417976254636',
-    appId: '1:417976254636:web:f1aec7bd905a480a321f09',
+    appId: '1:417976254636:web:75ba2292608eb3b5321f09',
 };
 
 export default config;
