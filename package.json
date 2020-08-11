@@ -12,6 +12,7 @@
     "pod": "cd ios && pod install && cd .."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
@@ -24,7 +25,10 @@
     "react-native-safe-area-context": "^3.1.4",
     "react-native-screens": "^2.10.1",
     "react-native-snackbar": "^2.2.3",
-    "react-native-vector-icons": "^7.0.0"
+    "react-native-vector-icons": "^7.0.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
