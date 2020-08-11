@@ -7,15 +7,22 @@
  */
 
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import Firebase from 'firebase';
 
 import Router from './routes/Router';
 
 function App() {
+    const [user, setUser] = useState(null);
+
+    Firebase.auth().onAuthStateChanged((_user) => {
+        setUser(_user);
+    });
+
     return (
         <NavigationContainer>
-            <Router />
+            <Router user={user} />
         </NavigationContainer>
     );
 }
