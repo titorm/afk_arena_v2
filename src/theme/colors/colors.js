@@ -8,7 +8,7 @@ const colors = {
 
     success: '#3CBA92',
     info: '#1565C0',
-    warninr: '#F98D21',
+    warning: '#F98D21',
     error: '#FF4040',
 };
 
