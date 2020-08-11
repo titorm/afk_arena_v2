@@ -50,6 +50,7 @@ function HeroListContainer({ callback }) {
             <Caption>Filters</Caption>
             <View style={styles.searchContainer}>
                 <TextInput
+                    dense
                     mode='outlined'
                     style={styles.input}
                     label='Text'
