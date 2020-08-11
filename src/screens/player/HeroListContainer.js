@@ -8,7 +8,7 @@ import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 
 import Loading from '../../components/Loading/Loading';
-import SearchContainer from '../../components/SearchContainer';
+import HeroList from './HeroList';
 
 function HeroListContainer() {
     const navigation = useNavigation();
@@ -97,9 +97,10 @@ function HeroListContainer() {
     }
     return (
         <View style={styles.container}>
-            <SearchContainer />
-
-            <Text style={styles.caption}>Result (63 of 63)</Text>
+            <HeroList
+                editHero={editHero}
+                heroList={heroList}
+            />
         </View>
     );
 }
