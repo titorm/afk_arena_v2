@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import Firebase from 'firebase';
@@ -96,18 +96,18 @@ function HeroListContainer() {
         return <Loading />;
     }
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <HeroList
                 editHero={editHero}
                 heroList={heroList}
             />
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        flex: 1,
     },
     caption: {
         letterSpacing: typography.letterSpacing.caption,

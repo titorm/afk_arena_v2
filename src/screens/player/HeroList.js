@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 
-import colors from '../../theme/colors/colors';
-import typography from '../../theme/typography';
+import Caption from '../../components/Caption';
 
 import objectService from '../../services/objectService';
 import SearchContainer from '../../components/SearchContainer';
 
+// eslint-disable-next-line no-unused-vars
 function HeroList({ editHero, heroList }) {
     const [filteredHeroList, setFilteredHeroList] = useState([]);
 
@@ -23,11 +23,17 @@ function HeroList({ editHero, heroList }) {
         });
 
         possibleHeroList.sort((a, b) => {
-            if (!sort.property || sort.property === '-') return 0;
+            if (!sort.property || sort.property === '-') {
+                return 0;
+            }
             const aValue = objectService.getNestedPropertyValue(a, sort.property);
             const bValue = objectService.getNestedPropertyValue(b, sort.property);
-            if (aValue < bValue) return sort.reverse ? 1 : -1;
-            if (aValue > bValue) return sort.reverse ? -1 : 1;
+            if (aValue < bValue) {
+                return sort.reverse ? 1 : -1;
+            }
+            if (aValue > bValue) {
+                return sort.reverse ? -1 : 1;
+            }
             return 0;
         });
 
@@ -35,26 +41,21 @@ function HeroList({ editHero, heroList }) {
     }
 
     return (
-        <View style={styles.container}>
-            <SearchContainer
-                callback={changeFilter}
-            />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <SearchContainer
+                    callback={changeFilter}
+                />
 
-            <Text style={styles.caption}>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Text>
-        </View>
+                <Caption>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-    },
-    caption: {
-        letterSpacing: typography.letterSpacing.caption,
-        fontSize: typography.fontSize.caption,
-        fontFamily: typography.fontFamily.semiBold,
-        textTransform: typography.textTransform.uppercase,
-        color: colors.primary,
+        flex: 1,
     },
 });
 
