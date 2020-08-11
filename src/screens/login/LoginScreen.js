@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import Firebase from 'firebase';
+import React, { useLayoutEffect, useState } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
+import Firebase from 'firebase';
 
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 import feedbackService from '../../services/feedbackService';
+
+import { setUser } from '../../store/modules/user/actions';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -23,10 +26,19 @@ const theme = {
     },
 };
 
-function LoginScreen() {
+function LoginScreen(props) {
+    const { navigation } = props;
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [onCreate, setOnCreate] = useState(false);
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: '',
+        });
+    }, [navigation]);
 
     function submit() {
         if (onCreate) {
@@ -41,8 +53,9 @@ function LoginScreen() {
             .then(() => {
                 Firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then(() => {
+                        dispatch(setUser(Firebase.auth().currentUser));
                         feedbackService.showSuccessMessage('Account created successfully!');
-                        // history.push('/player/hero-list');
+                        navigateToHeroList();
                     }).catch((error) => {
                         feedbackService.showErrorMessage(error.message);
                     });
@@ -54,11 +67,19 @@ function LoginScreen() {
             .then(() => {
                 Firebase.auth().signInWithEmailAndPassword(email, password)
                     .then(() => {
-                        // history.push('/player/hero-list');
+                        dispatch(setUser(Firebase.auth().currentUser));
+                        navigateToHeroList();
                     }).catch((error) => {
                         feedbackService.showErrorMessage(error.message);
                     });
             });
+    }
+
+    function navigateToHeroList() {
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'heroList' }],
+        });
     }
 
     return (
@@ -71,7 +92,7 @@ function LoginScreen() {
                 behavior={isAndroid ? null : 'padding'}
                 style={styles.container}
             >
-                <Text style={styles.h1}>Login</Text>
+                <Text style={styles.h3}>Login</Text>
                 <TextInput
                     style={styles.input}
                     mode='outlined'
@@ -118,7 +139,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    h1: {
+    h3: {
         fontSize: typography.fontSize.h3,
         fontFamily: typography.fontFamily.thin,
         textTransform: typography.textTransform.uppercase,
