@@ -310,6 +310,8 @@ PODS:
     - React
   - RNSnackbar (2.2.3):
     - React
+  - RNSVG (12.1.0):
+    - React
   - RNVectorIcons (7.0.0):
     - React
   - Yoga (1.14.0)
@@ -370,6 +372,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSnackbar (from `../node_modules/react-native-snackbar`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -453,6 +456,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSnackbar:
     :path: "../node_modules/react-native-snackbar"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -502,6 +507,7 @@ SPEC CHECKSUMS:
   RNReanimated: f05ea1c5ee07891aaefee662f073f4944c87ac4d
   RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
   RNSnackbar: 57932b2527096e609a86b1da2a2dfa46d624dc7c
+  RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
   Yoga: 7740b94929bbacbddda59bf115b5317e9a161598
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
