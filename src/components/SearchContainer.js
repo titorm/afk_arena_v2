@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
+import theme from '../theme/theme';
 import colors from '../theme/colors/colors';
-import typography from '../theme/typography';
+import Caption from '../components/Caption';
 
 import { factionOptionList, typeOptionList, classOptionList, roleOptionList } from '../services/infoService';
 
@@ -44,7 +47,15 @@ function HeroListContainer({ callback }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.caption}>Filters</Text>
+            <Caption>Filters</Caption>
+            <View style={styles.searchContainer}>
+                <TextInput
+                    mode='outlined'
+                    style={styles.input}
+                    label='Text'
+                    theme={theme}
+                />
+            </View>
         </View>
     );
 }
@@ -54,12 +65,13 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: 12,
     },
-    caption: {
-        letterSpacing: typography.letterSpacing.caption,
-        fontSize: typography.fontSize.caption,
-        fontFamily: typography.fontFamily.semiBold,
-        textTransform: typography.textTransform.uppercase,
-        color: colors.primary,
+    searchContainer: {
+        marginTop: 8,
+        flexDirection: 'row',
+    },
+    input: {
+        flex: 1,
+        backgroundColor: colors.background,
     },
 });
 
