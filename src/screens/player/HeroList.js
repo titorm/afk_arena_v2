@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import Caption from '../../components/Caption';
-
+import HeroItem from './HeroItem';
 import objectService from '../../services/objectService';
 import SearchContainer from '../../components/SearchContainer';
 
@@ -40,22 +40,38 @@ function HeroList({ editHero, heroList }) {
         setFilteredHeroList(possibleHeroList);
     }
 
-    return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.container}>
-                <SearchContainer
-                    callback={changeFilter}
-                />
+    function renderItem({ item }) {
+        return (
+            <HeroItem hero={item} />
+        );
+    }
 
-                <Caption>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
-            </View>
-        </TouchableWithoutFeedback>
+    return (
+        <View style={styles.container}>
+            <SearchContainer
+                callback={changeFilter}
+            />
+
+            <Caption>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
+
+            <FlatList
+                style={styles.flatListCotainer}
+                data={filteredHeroList}
+                keyExtractor={(item) => item.id}
+                maxToRenderPerBatch={5}
+                renderItem={renderItem}
+            />
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    flatListCotainer: {
+        flex: 1,
+        marginTop: 8,
     },
 });
 

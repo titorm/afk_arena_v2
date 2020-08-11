@@ -35,7 +35,7 @@ const roleOptionList = [
 ];
 
 const ascensionOptionList = [
-    { value: 'NONE', label: 'None' },
+    { value: 'NONE', label: 'Not Acquired' },
     { value: 'ELITE', label: 'Elite' },
     { value: 'ELITE_PLUS', label: 'Elite +' },
     { value: 'LEGENDARY', label: 'Legendary' },
