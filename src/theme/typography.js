@@ -9,6 +9,8 @@ const fontFamily = {
     regularLight: 'WorkSans-RegularItalic',
     medium: 'WorkSans-Medium',
     mediumItalic: 'WorkSans-MediumItalic',
+    semiBold: 'WorkSans-SemiBold',
+    semiBoldItalic: 'WorkSans-SemiBoldItalic',
     bold: 'WorkSans-Bold',
     boldItalic: 'WorkSans-BoldItalic',
     extraBold: 'WorkSans-ExtraBold',

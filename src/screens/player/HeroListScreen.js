@@ -1,10 +1,11 @@
 import React, { useLayoutEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
-import Firebase from 'firebase';
 
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
+
+import HeroListContainer from './HeroListContainer';
 
 function HeroList(props) {
     const { navigation } = props;
@@ -26,7 +27,8 @@ function HeroList(props) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.h3}>HeroList</Text>
+            <Text style={styles.subtitle2}>All your heroes managed with ease</Text>
+            <HeroListContainer />
         </View>
     );
 }
@@ -35,16 +37,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background,
+        padding: 8,
     },
     logout: {
         fontSize: typography.fontSize.overline,
         fontFamily: typography.fontFamily.light,
     },
-    h3: {
-        fontSize: typography.fontSize.h3,
-        fontFamily: typography.fontFamily.thin,
-        textTransform: typography.textTransform.uppercase,
-        marginBottom: 12,
+    subtitle2: {
+        fontSize: typography.fontSize.subtitle2,
+        fontFamily: typography.fontFamily.regular,
+        textAlign: 'center',
+        color: colors.text,
+        marginBottom: 8,
     },
 });
 
