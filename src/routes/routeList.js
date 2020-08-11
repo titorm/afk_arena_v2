@@ -1,11 +1,13 @@
 import React from 'react';
 import { Image } from 'react-native';
+import { Button } from 'react-native-paper';
 
-import LoginScreen from '../screens/login/LoginScreen';
 import colors from '../theme/colors/colors';
 
-const options = (title) => ({
-    title,
+import LoginScreen from '../screens/login/LoginScreen';
+import HeroListScreen from '../screens/player/HeroListScreen';
+
+const options = {
     headerLeft: () => (
         <Image
             style={{ marginLeft: 12, width: 50, height: 50 }}
@@ -19,10 +21,13 @@ const options = (title) => ({
     headerTitleStyle: {
         color: 'white',
     },
-});
+};
 
 const routeList = [
-    { key: 'login', name: 'login', component: LoginScreen, options: options('') },
+    // public
+    { key: 'login', name: 'login', component: LoginScreen, options },
+    // private
+    { key: 'heroList', name: 'heroList', component: HeroListScreen, options },
 ];
 
 export default routeList;

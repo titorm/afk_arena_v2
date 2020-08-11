@@ -1,12 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useSelector } from 'react-redux';
 
 import routeList from './routeList';
 
 const Stack = createStackNavigator();
 
-// eslint-disable-next-line no-unused-vars
-function Router({ user }) {
+function Router() {
+    const { user } = useSelector((state) => state.user);
+    let initialRouteName = 'login';
+    if (user) {
+        initialRouteName = 'heroList';
+    }
+
     function renderScreen({ key, name, component, options }) {
         return (
             <Stack.Screen
@@ -23,7 +29,7 @@ function Router({ user }) {
     }
 
     return (
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName={initialRouteName}>
             {renderRoutes()}
         </Stack.Navigator>
     );

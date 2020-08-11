@@ -7,23 +7,27 @@
  */
 
 import 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import Firebase from 'firebase';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 
 import Router from './routes/Router';
 
+import store from './store/store';
+
 function App() {
-    const [user, setUser] = useState(null);
-
-    Firebase.auth().onAuthStateChanged((_user) => {
-        setUser(_user);
-    });
-
     return (
-        <NavigationContainer>
-            <Router user={user} />
-        </NavigationContainer>
+        <Provider store={store.store}>
+            <PersistGate
+                loading={null}
+                persistor={store.persistor}
+            >
+                <NavigationContainer>
+                    <Router />
+                </NavigationContainer>
+            </PersistGate>
+        </Provider>
     );
 }
 
