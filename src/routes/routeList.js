@@ -22,7 +22,7 @@ const options = (title) => ({
 });
 
 const routeList = [
-    { name: 'login', component: LoginScreen, options: options('') },
+    { key: 'login', name: 'login', component: LoginScreen, options: options('') },
 ];
 
 export default routeList;

@@ -6,9 +6,10 @@ import routeList from './routeList';
 const Stack = createStackNavigator();
 
 function Router() {
-    function renderScreen({ name, component, options }) {
+    function renderScreen({ key, name, component, options }) {
         return (
             <Stack.Screen
+                key={key}
                 name={name}
                 component={component}
                 options={options}
