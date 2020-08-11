@@ -24,7 +24,7 @@ However, we made some changes. Don't worry, lint will warn you :)
 npm run lint
 ```
 
-### Releated Projects
-One friend of mine did the original version of this project with ReactJS!<br/>
+### Original Project
+This is a mobile adaptation of Phellipe project with ReactJS!
 Check it out (Thanks Phellipe!)<br/>
 https://github.com/phellipeperin/afk-arena-v2
