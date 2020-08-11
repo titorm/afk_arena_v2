@@ -25,6 +25,6 @@ npm run lint
 ```
 
 ### Original Project
-This is a mobile adaptation of Phellipe project with ReactJS!
+This is a mobile adaptation of Phellipe project with ReactJS!<br />
 Check it out (Thanks Phellipe!)<br/>
 https://github.com/phellipeperin/afk-arena-v2
