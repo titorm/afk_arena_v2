@@ -5,6 +5,7 @@ import { Button, TextInput } from 'react-native-paper';
 
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
+import feedbackService from '../../services/feedbackService';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -40,11 +41,10 @@ function LoginScreen() {
             .then(() => {
                 Firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then(() => {
-                        // feedbackService.showSuccessMessage('Account created successfully!');
+                        feedbackService.showSuccessMessage('Account created successfully!');
                         // history.push('/player/hero-list');
                     }).catch((error) => {
-                        console.log(error);
-                        // feedbackService.showErrorMessage(error.message);
+                        feedbackService.showErrorMessage(error.message);
                     });
             });
     }
@@ -56,8 +56,7 @@ function LoginScreen() {
                     .then(() => {
                         // history.push('/player/hero-list');
                     }).catch((error) => {
-                        console.log(error);
-                        // feedbackService.showErrorMessage(error.message);
+                        feedbackService.showErrorMessage(error.message);
                     });
             });
     }

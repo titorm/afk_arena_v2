@@ -5,7 +5,8 @@ import routeList from './routeList';
 
 const Stack = createStackNavigator();
 
-function Router() {
+// eslint-disable-next-line no-unused-vars
+function Router({ user }) {
     function renderScreen({ key, name, component, options }) {
         return (
             <Stack.Screen
