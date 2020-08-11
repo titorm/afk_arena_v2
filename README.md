@@ -23,3 +23,8 @@ However, we made some changes. Don't worry, lint will warn you :)
 ```
 npm run lint
 ```
+
+### Releated Projects
+One friend of mine did the original version of this project with ReactJS!<br/>
+Check it out (Thanks Phellipe!)<br/>
+https://github.com/phellipeperin/afk-arena-v2
