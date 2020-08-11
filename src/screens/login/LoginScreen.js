@@ -4,6 +4,7 @@ import { Button, TextInput } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import Firebase from 'firebase';
 
+import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 import feedbackService from '../../services/feedbackService';
@@ -11,20 +12,6 @@ import feedbackService from '../../services/feedbackService';
 import { setUser } from '../../store/modules/user/actions';
 
 const isAndroid = Platform.OS === 'android';
-
-const theme = {
-    dark: true,
-    mode: 'adaptive',
-    colors: {
-        primary: colors.primary,
-        secondary: colors.secondary,
-        background: colors.background,
-        error: colors.error,
-    },
-    fonts: {
-        fontFamily: typography.fontFamily.regular,
-    },
-};
 
 function LoginScreen(props) {
     const { navigation } = props;
