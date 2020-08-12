@@ -4,7 +4,7 @@ import { Avatar } from 'react-native-paper';
 
 import typography from '../../../theme/typography';
 
-function HeroSignatureItem(props) {
+function HeroItemSignatureItem(props) {
     const { hero, playerInfo } = props;
 
     const acquired = playerInfo.signatureItem !== -1;
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HeroSignatureItem;
+export default HeroItemSignatureItem;

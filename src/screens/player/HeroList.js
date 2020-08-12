@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import Caption from '../../components/Caption';
 import HeroItem from './HeroItem';
@@ -42,7 +42,9 @@ function HeroList({ editHero, heroList }) {
 
     function renderItem({ item }) {
         return (
-            <HeroItem hero={item} />
+            <TouchableOpacity onPress={() => editHero(item)}>
+                <HeroItem hero={item} />
+            </TouchableOpacity>
         );
     }
 

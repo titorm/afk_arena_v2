@@ -7,7 +7,7 @@ import typography from '../../theme/typography';
 
 import HeroListContainer from './HeroListContainer';
 
-function HeroList(props) {
+function HeroListScreen(props) {
     const { navigation } = props;
 
     useLayoutEffect(() => {
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HeroList;
+export default HeroListScreen;

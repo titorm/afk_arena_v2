@@ -88,8 +88,8 @@ function HeroListContainer() {
         return { acquired: false, plus: 0 };
     }
 
-    function editHero(heroID) {
-        navigation.navigate('heroEdit', { id: heroID });
+    function editHero(hero) {
+        navigation.navigate('hero', { hero });
     }
 
     if (loading) {

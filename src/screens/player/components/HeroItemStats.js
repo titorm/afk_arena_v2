@@ -4,10 +4,10 @@ import { Chip } from 'react-native-paper';
 
 import typography from '../../../theme/typography';
 
-import HeroAscension from './HeroAscension';
-import HeroSignatureItem from './HeroSignatureItem';
+import HeroAscension from './HeroItemAscension';
+import HeroSignatureItem from './HeroItemSignatureItem';
 
-function HeroStats(props) {
+function HeroItemStats(props) {
     const { hero, playerInfo } = props;
 
     const heroAcquired = playerInfo.ascension && playerInfo.ascension !== 'NONE';
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HeroStats;
+export default HeroItemStats;

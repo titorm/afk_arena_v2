@@ -5,8 +5,8 @@ import { Avatar, Divider } from 'react-native-paper';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 
-import HeroStats from './components/HeroStats';
-import HeroCategory from './components/HeroCategory';
+import HeroStats from './components/HeroItemStats';
+import HeroCategory from './components/HeroItemCategory';
 
 function HeroItem(props) {
     const { hero } = props;

@@ -4,7 +4,7 @@ import { Avatar } from 'react-native-paper';
 
 import heroService from '../../../services/heroService';
 
-function HeroCategory(props) {
+function HeroItemCategory(props) {
     const { category } = props;
     const size = 24;
 
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HeroCategory;
+export default HeroItemCategory;
