@@ -2,8 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
+// eslint-disable-next-line no-unused-vars
 function MainDrawerContent(props) {
-    console.log(props);
     return (
         <DrawerContentScrollView>
             <View>
