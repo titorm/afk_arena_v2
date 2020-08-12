@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 function Router() {
     const { user } = useSelector((state) => state.user);
     let initialRouteName = 'login';
-    if (user) {
+    if (user && user.uid) {
         initialRouteName = 'heroList';
     }
 
