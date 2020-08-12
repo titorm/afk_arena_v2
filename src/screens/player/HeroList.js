@@ -61,7 +61,6 @@ function HeroList({ editHero, heroList }) {
                 style={styles.flatListCotainer}
                 data={filteredHeroList}
                 keyExtractor={(item) => item.id}
-                maxToRenderPerBatch={5}
                 renderItem={renderItem}
             />
         </View>

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar, Card } from 'react-native-paper';
 
+import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 
@@ -21,6 +22,7 @@ function HeroItem(props) {
             <View style={styles.container}>
                 <Avatar.Image
                     size={64}
+                    theme={theme}
                     source={{ uri: images.profile }}
                 />
                 <View style={styles.infoContainer}>

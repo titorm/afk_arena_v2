@@ -1,6 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+import Firebase from 'firebase';
 
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
@@ -18,12 +19,20 @@ function HeroListScreen(props) {
                     dark
                     color='white'
                     labelStyle={styles.logout}
+                    onPress={logout}
                 >
                     Logout
                 </Button>
             ),
         });
     }, [navigation]);
+
+    function logout() {
+        Firebase.auth().signOut()
+            .then(() => {
+                navigation.navigate('login');
+            });
+    }
 
     return (
         <View style={styles.container}>
