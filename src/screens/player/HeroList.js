@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import Caption from '../../components/Caption';
 import HeroItem from './HeroItem';
@@ -42,9 +42,10 @@ function HeroList({ editHero, heroList }) {
 
     function renderItem({ item }) {
         return (
-            <TouchableOpacity onPress={() => editHero(item)}>
-                <HeroItem hero={item} />
-            </TouchableOpacity>
+            <HeroItem
+                editHero={editHero}
+                hero={item}
+            />
         );
     }
 
@@ -54,7 +55,7 @@ function HeroList({ editHero, heroList }) {
                 callback={changeFilter}
             />
 
-            <Caption>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
+            <Caption style={styles.caption}>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
 
             <FlatList
                 style={styles.flatListCotainer}
@@ -71,9 +72,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    caption: {
+        marginHorizontal: 4,
+    },
     flatListCotainer: {
         flex: 1,
-        marginTop: 8,
+        marginTop: 4,
     },
 });
 

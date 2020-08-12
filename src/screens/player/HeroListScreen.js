@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background,
-        padding: 8,
+        paddingVertical: 8,
+        paddingHorizontal: 4,
     },
     logout: {
         fontSize: typography.fontSize.overline,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Avatar, Divider } from 'react-native-paper';
+import { Avatar, Card } from 'react-native-paper';
 
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
@@ -9,11 +9,15 @@ import HeroStats from './components/HeroItemStats';
 import HeroCategory from './components/HeroItemCategory';
 
 function HeroItem(props) {
-    const { hero } = props;
+    const { editHero, hero } = props;
     const { category, info, images, playerInfo } = hero;
 
     return (
-        <>
+        <Card
+            style={styles.cardContainer}
+            elevation={2}
+            onPress={() => editHero(hero)}
+        >
             <View style={styles.container}>
                 <Avatar.Image
                     size={64}
@@ -31,16 +35,19 @@ function HeroItem(props) {
                     />
                 </View>
             </View>
-            <Divider />
-        </>
+        </Card>
     );
 }
 
 const styles = StyleSheet.create({
+    cardContainer: {
+        margin: 4,
+        padding: 8,
+        backgroundColor: colors.background,
+    },
     container: {
         flex: 1,
         flexDirection: 'row',
-        paddingVertical: 8,
         alignItems: 'center',
     },
     infoContainer: {

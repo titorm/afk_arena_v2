@@ -63,11 +63,12 @@ function HeroListContainer({ callback }) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        marginBottom: 12,
+        width: '98%',
+        marginHorizontal: '1%',
+        marginBottom: '4%',
     },
     searchContainer: {
-        marginTop: 8,
+        marginTop: '2%',
         flexDirection: 'row',
     },
     input: {
