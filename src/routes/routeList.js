@@ -2,6 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 
 import colors from '../theme/colors/colors';
+import typography from '../theme/typography';
 
 import HeroScreen from '../screens/player/HeroScreen';
 import LoginScreen from '../screens/login/LoginScreen';
@@ -20,6 +21,8 @@ const options = {
     },
     headerTitleStyle: {
         color: 'white',
+        fontFamily: typography.fontFamily.regular,
+        letterSpacing: typography.letterSpacing.h6,
     },
 };
 
