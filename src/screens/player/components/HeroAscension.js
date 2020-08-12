@@ -22,11 +22,12 @@ function HeroAscension(props) {
     }
 
     function getStars() {
-        return getAscencionStars().map(() => (
+        return getAscencionStars().map((_, index) => (
             <Icon
+                key={index.toString()}
                 color='black'
                 name='star'
-                size={8}
+                size={12}
                 type='solid'
             />
         ));
@@ -36,10 +37,10 @@ function HeroAscension(props) {
         <View style={styles.container}>
             <Avatar.Image
                 style={styles.image}
-                size={28}
+                size={56}
                 source={heroService.getHeroAscension(playerInfo.ascension)}
             />
-            <View style={styles.starContainer}>
+            <View style={styles.starsContainer}>
                 {getStars()}
             </View>
         </View>
@@ -54,9 +55,11 @@ const styles = StyleSheet.create({
     image: {
         backgroundColor: 'transparent',
     },
-    starContainer: {
-        flexDirection: 'row',
+    starsContainer: {
+        width: 100,
         marginTop: 4,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
     },
 });
 

@@ -108,15 +108,6 @@ const styles = StyleSheet.create({
         color: colors.text,
         marginBottom: 8,
     },
-    starsContainer: {
-        marginTop: 4,
-        width: 100,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-    },
-    avatar: {
-        backgroundColor: 'transparent',
-    },
     editContainer: {
         marginTop: 24,
     },
