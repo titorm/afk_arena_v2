@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { Button } from 'react-native-paper';
 
 import colors from '../theme/colors/colors';
 
+import HeroScreen from '../screens/player/HeroScreen';
 import LoginScreen from '../screens/login/LoginScreen';
 import HeroListScreen from '../screens/player/HeroListScreen';
 
@@ -28,6 +28,7 @@ const routeList = [
     { key: 'login', name: 'login', component: LoginScreen, options },
     // private
     { key: 'heroList', name: 'heroList', component: HeroListScreen, options },
+    { key: 'hero', name: 'hero', component: HeroScreen, options },
 ];
 
 export default routeList;
