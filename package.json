@@ -27,6 +27,7 @@
     "native-base": "^2.13.13",
     "react": "16.13.1",
     "react-native": "0.63.2",
+    "react-native-elements": "^2.2.1",
     "react-native-fontawesome-pro": "^2.1.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-paper": "^4.0.1",
