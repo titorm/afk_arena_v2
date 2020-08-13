@@ -6,7 +6,7 @@ import heroService from '../../../services/heroService';
 
 function HeroHeader(props) {
     const { category, bannerUri } = props;
-    const size = 24;
+    const size = 40;
 
     return (
         <View style={styles.container}>
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        alignItems: 'center',
     },
     banner: {
         width: 100,

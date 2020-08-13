@@ -4,8 +4,8 @@ import { Chip } from 'react-native-paper';
 
 import typography from '../../../theme/typography';
 
-import HeroAscension from './HeroItemAscension';
-import HeroSignatureItem from './HeroItemSignatureItem';
+import HeroAscension from './HeroAscension';
+import HeroSignatureItem from './HeroSignatureItem';
 
 function HeroItemStats(props) {
     const { hero, playerInfo } = props;

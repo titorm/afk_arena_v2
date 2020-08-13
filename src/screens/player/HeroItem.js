@@ -6,8 +6,8 @@ import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 
-import HeroStats from './components/HeroItemStats';
-import HeroCategory from './components/HeroItemCategory';
+import HeroStats from '../../components/Hero/List/HeroStats';
+import HeroCategory from '../../components/Hero/List/HeroCategory';
 
 function HeroItem(props) {
     const { editHero, hero } = props;
@@ -17,7 +17,7 @@ function HeroItem(props) {
         <Card
             style={styles.cardContainer}
             elevation={2}
-            onPress={() => editHero(hero)}
+            onPress={() => editHero(hero.id)}
         >
             <View style={styles.container}>
                 <Avatar.Image
