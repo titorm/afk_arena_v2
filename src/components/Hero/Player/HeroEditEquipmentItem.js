@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import { CheckBox } from 'react-native-elements';
@@ -12,15 +12,14 @@ import heroService from '../../../services/heroService';
 function HeroEditEquipmentItem(props) {
     const { equipment, heroType, type, update } = props;
 
-    useEffect(() => {
-        FontAwesome.loadFont();
-    }, []);
+    FontAwesome.loadFont();
 
     const tierOptionList = [
         { value: 0, label: 'T0' },
         { value: 1, label: 'T1' },
         { value: 2, label: 'T2' },
     ];
+
     const starOptionList = [
         { value: 0, label: 'Base' },
         { value: 1, label: '1 Star' },
