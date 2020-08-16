@@ -106,21 +106,22 @@ function HeroEditEquipmentItem(props) {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        flexDirection: 'row',
         marginTop: 8,
         alignItems: 'center',
+        flexDirection: 'row',
     },
     checkBox: {
-        alignItems: 'center',
         marginLeft: 8,
+        alignItems: 'center',
         borderWidth: 0,
         borderColor: 'transparent',
     },
     checkBoxContainer: {
-        backgroundColor: 'transparent',
         minWidth: 110,
+        borderWidth: 0,
         marginVertical: 0,
         paddingVertical: 8,
+        backgroundColor: 'transparent',
         paddingHorizontal: 0,
     },
     pickerContainer: {
