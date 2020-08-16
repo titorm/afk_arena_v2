@@ -5,6 +5,7 @@ import { Avatar } from 'react-native-paper';
 import { CheckBox } from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import theme from '../../../theme/theme';
 import Picker from '../../Picker';
 import colors from '../../../theme/colors/colors';
 import heroService from '../../../services/heroService';
@@ -14,6 +15,7 @@ function HeroEditEquipmentItem(props) {
 
     FontAwesome.loadFont();
 
+    // consts
     const tierOptionList = [
         { value: 0, label: 'T0' },
         { value: 1, label: 'T1' },
@@ -29,6 +31,9 @@ function HeroEditEquipmentItem(props) {
         { value: 5, label: '5 Stars' },
     ];
 
+    const factionPressed = equipment.acquired ? updateFaction() : null;
+
+    // methods
     function updateAcquired() {
         updateItem('acquired', !equipment.acquired);
     }
@@ -54,6 +59,7 @@ function HeroEditEquipmentItem(props) {
             <Avatar.Image
                 size={64}
                 source={heroService.getEquipment(heroType, type, equipment.acquired, equipment.tier)}
+                theme={theme}
             />
             <View style={styles.checkBox}>
                 <CheckBox
@@ -68,7 +74,7 @@ function HeroEditEquipmentItem(props) {
                     checkedColor={colors.primary}
                     containerStyle={styles.checkBoxContainer}
                     checked={equipment.acquired && equipment.faction}
-                    onPress={equipment.acquired && updateFaction}
+                    onPress={factionPressed}
                 />
             </View>
             <View>
