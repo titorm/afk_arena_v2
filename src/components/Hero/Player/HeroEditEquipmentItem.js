@@ -31,7 +31,7 @@ function HeroEditEquipmentItem(props) {
         { value: 5, label: '5 Stars' },
     ];
 
-    const factionPressed = equipment.acquired ? updateFaction() : null;
+    const factionPressed = equipment.acquired ? updateFaction : null;
 
     // methods
     function updateAcquired() {
