@@ -8,10 +8,22 @@ const theme = {
         primary: colors.primary,
         secondary: colors.secondary,
         background: colors.background,
+        text: colors.text,
         error: colors.error,
     },
     fonts: {
-        fontFamily: typography.fontFamily.regular,
+        thin: {
+            fontFamily: typography.fontFamily.thin,
+        },
+        light: {
+            fontFamily: typography.fontFamily.light,
+        },
+        regular: {
+            fontFamily: typography.fontFamily.regular,
+        },
+        medium: {
+            fontFamily: typography.fontFamily.medium,
+        },
     },
 };
 

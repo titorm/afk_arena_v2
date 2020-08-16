@@ -49,8 +49,9 @@ function HeroAscension(props) {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
         width: 30,
+        marginTop: 12,
+        alignItems: 'center',
     },
     image: {
         backgroundColor: 'transparent',
