@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Picker from '../../Picker';
-import colors from '../../../theme/colors/colors';
 import CheckBox from '../../CheckBox';
 
 function HeroEditFurnitureItem(props) {

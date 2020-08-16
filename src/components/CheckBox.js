@@ -7,7 +7,7 @@ import Icon from 'react-native-fontawesome-pro';
 import colors from '../theme/colors/colors';
 
 function CustomCheckBox(props) {
-    const { checked, onPress, title = '' } = props;
+    const { checked, onPress, style, title = '' } = props;
 
     FontAwesome.loadFont();
 
@@ -35,7 +35,7 @@ function CustomCheckBox(props) {
         <CheckBox
             title={title}
             checkedColor={colors.primary}
-            containerStyle={styles.checkBoxContainer}
+            containerStyle={[styles.checkBoxContainer, style]}
             checked={checked}
             checkedIcon={checkedIcon()}
             uncheckedIcon={uncheckedIcon()}
@@ -47,7 +47,6 @@ function CustomCheckBox(props) {
 const styles = StyleSheet.create({
     checkBoxContainer: {
         minWidth: 110,
-        alignItems: 'center',
         borderWidth: 0,
         marginVertical: 0,
         paddingVertical: 8,

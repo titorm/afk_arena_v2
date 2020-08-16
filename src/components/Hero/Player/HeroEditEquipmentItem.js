@@ -109,14 +109,6 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderColor: 'transparent',
     },
-    checkBoxContainer: {
-        minWidth: 110,
-        borderWidth: 0,
-        marginVertical: 0,
-        paddingVertical: 8,
-        backgroundColor: 'transparent',
-        paddingHorizontal: 0,
-    },
     pickerContainer: {
         minWidth: 10,
     },

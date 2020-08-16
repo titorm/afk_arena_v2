@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
 
 import theme from '../../../theme/theme';
-import colors from '../../../theme/colors/colors';
 import Caption from '../../Caption';
 import CheckBox from '../../CheckBox';
 
@@ -41,8 +40,8 @@ function HeroSkins(props) {
                         theme={theme}
                     />
                     <CheckBox
-                        checkedColor={colors.primary}
                         checked={checked}
+                        style={styles.checkbox}
                         onPress={onPress}
                     />
                 </View>
@@ -61,8 +60,7 @@ function HeroSkins(props) {
                         theme={theme}
                     />
                     <CheckBox
-                        checkedColor={colors.primary}
-                        containerStyle={styles.checkBoxContainer}
+                        style={styles.checkbox}
                         checked
                     />
                 </View>
@@ -85,6 +83,9 @@ const styles = StyleSheet.create({
     skinContainer: {
         alignItems: 'center',
         marginHorizontal: 8,
+    },
+    checkbox: {
+        alignItems: 'center',
     },
 });
 
