@@ -21,8 +21,8 @@ function CustomPicker(props) {
         <Picker
             mode='dropdown'
             enabled={enabled}
-            style={[styles.pickerStyle, style]}
-            textStyle={styles.pickerTextStyle}
+            style={[styles.pickerStyle, style, !enabled && styles.disabledStyle]}
+            textStyle={[styles.pickerTextStyle, !enabled && styles.textDisabledStyle]}
             placeholder={placeholder}
             selectedValue={selectedValue}
             onValueChange={onValueChange}
@@ -44,6 +44,12 @@ const styles = StyleSheet.create({
     pickerTextStyle: {
         textAlign: 'center',
         color: colors.text,
+    },
+    disabledStyle: {
+        borderColor: '#80808099',
+    },
+    textDisabledStyle: {
+        color: 'gray',
     },
 });
 
