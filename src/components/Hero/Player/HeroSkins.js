@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { CheckBox } from 'react-native-elements';
 import { Avatar } from 'react-native-paper';
 
 import theme from '../../../theme/theme';
 import colors from '../../../theme/colors/colors';
 import Caption from '../../Caption';
+import CheckBox from '../../CheckBox';
 
 function HeroSkins(props) {
     const { hero, update } = props;
@@ -42,7 +42,6 @@ function HeroSkins(props) {
                     />
                     <CheckBox
                         checkedColor={colors.primary}
-                        containerStyle={styles.checkBoxContainer}
                         checked={checked}
                         onPress={onPress}
                     />

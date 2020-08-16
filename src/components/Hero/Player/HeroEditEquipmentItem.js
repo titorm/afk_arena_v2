@@ -2,18 +2,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
-import { CheckBox } from 'react-native-elements';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import theme from '../../../theme/theme';
 import Picker from '../../Picker';
-import colors from '../../../theme/colors/colors';
+import CheckBox from '../../CheckBox';
 import heroService from '../../../services/heroService';
 
 function HeroEditEquipmentItem(props) {
     const { equipment, heroType, type, update } = props;
-
-    FontAwesome.loadFont();
 
     // consts
     const tierOptionList = [
@@ -54,6 +50,7 @@ function HeroEditEquipmentItem(props) {
         update(type, property, newValue);
     }
 
+    // render
     return (
         <View style={styles.container}>
             <Avatar.Image
@@ -64,15 +61,11 @@ function HeroEditEquipmentItem(props) {
             <View style={styles.checkBox}>
                 <CheckBox
                     title='Acquired'
-                    checkedColor={colors.primary}
-                    containerStyle={styles.checkBoxContainer}
                     checked={equipment.acquired}
                     onPress={updateAcquired}
                 />
                 <CheckBox
                     title='Faction'
-                    checkedColor={colors.primary}
-                    containerStyle={styles.checkBoxContainer}
                     checked={equipment.acquired && equipment.faction}
                     onPress={factionPressed}
                 />
