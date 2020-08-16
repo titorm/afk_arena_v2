@@ -5,6 +5,7 @@ import { Button } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Firebase from 'firebase';
 
+import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 import feedbackService from '../../services/feedbackService';
@@ -46,6 +47,7 @@ function HeroScreen(props) {
                     dark
                     color='white'
                     labelStyle={styles.logout}
+                    theme={theme}
                     onPress={logout}
                 >
                     Logout
@@ -123,7 +125,6 @@ function HeroScreen(props) {
         setHero({ ...hero, playerInfo: { ...hero.playerInfo, [property]: newValue } });
     }
 
-    // eslint-disable-next-line no-unused-vars
     async function update() {
         const document = Firebase.firestore().collection('players').doc(user.uid);
         const docGet = await document.get();
@@ -170,6 +171,7 @@ function HeroScreen(props) {
                         dark
                         mode='outlined'
                         color={colors.text}
+                        theme={theme}
                         onPress={navigation.goBack}
                     >
                         Go Back
@@ -201,6 +203,15 @@ function HeroScreen(props) {
                         hero={hero}
                         update={updateHeroSkins}
                     />
+                    <Button
+                        mode='contained'
+                        width='90%'
+                        color={colors.secondary}
+                        theme={theme}
+                        onPress={update}
+                    >
+                        Update
+                    </Button>
                 </View>
             </ScrollView>
         </SafeAreaView>
