@@ -14,6 +14,7 @@ import HeroHeader from '../../components/Hero/Player/HeroHeader';
 import HeroAscension from '../../components/Hero/Player/HeroAscension';
 import HeroEditAscension from '../../components/Hero/Player/HeroEditAscension';
 import HeroEditEquipment from '../../components/Hero/Player/HeroEditEquipment';
+import HeroEditFurniture from '../../components/Hero/Player/HeroEditFurniture';
 import HeroEditSignatureItem from '../../components/Hero/Player/HeroEditSignatureItem';
 
 function HeroScreen(props) {
@@ -109,7 +110,6 @@ function HeroScreen(props) {
         updateHeroPlayerInfo(newValue, 'equipment');
     }
 
-    // eslint-disable-next-line no-unused-vars
     function updateHeroFurniture(newValue) {
         updateHeroPlayerInfo(newValue, 'furniture');
     }
@@ -192,6 +192,10 @@ function HeroScreen(props) {
                     <HeroEditEquipment
                         hero={hero}
                         update={updateHeroEquipment}
+                    />
+                    <HeroEditFurniture
+                        hero={hero}
+                        update={updateHeroFurniture}
                     />
                 </View>
             </ScrollView>
