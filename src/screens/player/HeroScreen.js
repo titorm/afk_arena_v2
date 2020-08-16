@@ -10,6 +10,7 @@ import typography from '../../theme/typography';
 import feedbackService from '../../services/feedbackService';
 
 import Loading from '../../components/Loading/Loading';
+import HeroSkins from '../../components/Hero/Player/HeroSkins';
 import HeroHeader from '../../components/Hero/Player/HeroHeader';
 import HeroAscension from '../../components/Hero/Player/HeroAscension';
 import HeroEditAscension from '../../components/Hero/Player/HeroEditAscension';
@@ -114,8 +115,7 @@ function HeroScreen(props) {
         updateHeroPlayerInfo(newValue, 'furniture');
     }
 
-    // eslint-disable-next-line no-unused-vars
-    function updateHeroSignatureSkins(newValue) {
+    function updateHeroSkins(newValue) {
         updateHeroPlayerInfo(newValue, 'acquiredSkinList');
     }
 
@@ -196,6 +196,10 @@ function HeroScreen(props) {
                     <HeroEditFurniture
                         hero={hero}
                         update={updateHeroFurniture}
+                    />
+                    <HeroSkins
+                        hero={hero}
+                        update={updateHeroSkins}
                     />
                 </View>
             </ScrollView>
