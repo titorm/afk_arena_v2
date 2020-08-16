@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Caption from '../../Caption';
+import NoResults from '../../NoResults';
 import HeroEditFurnitureItem from './HeroEditFurnitureItem';
 
 function HeroEditFurniture(props) {
@@ -45,7 +46,12 @@ function HeroEditFurniture(props) {
 
     function renderFurniture() {
         if (!isFurnitureAvailable()) {
-            return null;
+            return (
+                <NoResults
+                    title='Furniture Not Available'
+                    subtitle='Ascend your hero first!'
+                />
+            );
         }
         return (
             <>
