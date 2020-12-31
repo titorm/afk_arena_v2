@@ -1,15 +1,21 @@
 const colors = {
-    primary: '#AD172E',
-    secondary: '#057AAD',
+    primary: '#58CCBC',
+    secondary: '#2C5673',
 
     text: '#2E3131',
-    background: '#F9EBC1',
-    header: '#4A311C',
+    disabled: '#E5E7EB',
+    background: '#E5E7EB',
+    header: '#2C5673',
 
     success: '#3CBA92',
     info: '#1565C0',
     warning: '#F98D21',
     error: '#FF4040',
+
+    elite: '#663399',
+    legendary: '#F4D03F',
+    mythic: '#CF000F',
+    ascended: '#FFFFFF',
 };
 
 export default colors;

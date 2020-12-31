@@ -52,6 +52,7 @@ const letterSpacing = {
 };
 
 const textTransform = {
+    none: 'none',
     uppercase: 'uppercase',
     capitalize: 'capitalize',
     lowecase: 'lowercase',
