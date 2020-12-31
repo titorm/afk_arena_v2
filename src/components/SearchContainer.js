@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        backgroundColor: colors.background,
+        backgroundColor: colors.white,
     },
 });
 

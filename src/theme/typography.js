@@ -55,7 +55,7 @@ const textTransform = {
     none: 'none',
     uppercase: 'uppercase',
     capitalize: 'capitalize',
-    lowecase: 'lowercase',
+    lowercase: 'lowercase',
 };
 
 const typography = {

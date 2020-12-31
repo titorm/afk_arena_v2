@@ -6,7 +6,8 @@ import typography from '../theme/typography';
 
 import HeroScreen from '../screens/player/HeroScreen';
 import LoginScreen from '../screens/login/LoginScreen';
-import HeroListScreen from '../screens/player/HeroListScreen';
+
+import AppRouter from './AppRouter';
 
 const options = {
     headerLeft: () => (
@@ -21,16 +22,18 @@ const options = {
     },
     headerTitleStyle: {
         color: 'white',
-        fontFamily: typography.fontFamily.regular,
+        fontWeight: '500',
+        fontFamily: typography.fontFamily.light,
         letterSpacing: typography.letterSpacing.h6,
+        textTransform: typography.textTransform.uppercase,
     },
 };
 
 const routeList = [
     // public
     { key: 'login', name: 'login', component: LoginScreen, options },
-    // private
-    { key: 'heroList', name: 'heroList', component: HeroListScreen, options },
+    // app
+    { key: 'app', name: 'manager', component: AppRouter, options },
     { key: 'hero', name: 'hero', component: HeroScreen, options },
 ];
 

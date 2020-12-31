@@ -46,11 +46,11 @@ function HeroScreen(props) {
                 <Button
                     dark
                     color='white'
-                    labelStyle={styles.logout}
+                    labelStyle={styles.goBack}
                     theme={theme}
-                    onPress={logout}
+                    onPress={navigation.goBack}
                 >
-                    Logout
+                    Go Back
                 </Button>
             ),
         });
@@ -67,13 +67,6 @@ function HeroScreen(props) {
                 setHero({ id: heroId, ...doc.data(), playerInfo });
             }
         }
-    }
-
-    function logout() {
-        Firebase.auth().signOut()
-            .then(() => {
-                navigation.navigate('login');
-            });
     }
 
     function getUri(uri) {
@@ -167,15 +160,6 @@ function HeroScreen(props) {
                 <View style={styles.container}>
                     <Text style={styles.h4}>{info.name}</Text>
                     <Text style={styles.subtitle2}>{info.title}</Text>
-                    <Button
-                        dark
-                        mode='outlined'
-                        color={colors.text}
-                        theme={theme}
-                        onPress={navigation.goBack}
-                    >
-                        Go Back
-                    </Button>
                     <HeroHeader
                         bannerUri={bannerUri}
                         category={category}
@@ -242,7 +226,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    logout: {
+    goBack: {
         fontSize: typography.fontSize.overline,
         fontFamily: typography.fontFamily.light,
     },

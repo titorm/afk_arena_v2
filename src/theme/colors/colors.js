@@ -2,6 +2,8 @@ const colors = {
     primary: '#58CCBC',
     secondary: '#2C5673',
 
+    white: '#FFFFFF',
+
     text: '#2E3131',
     disabled: '#E5E7EB',
     background: '#E5E7EB',

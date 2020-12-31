@@ -10,7 +10,7 @@ function MainRouter() {
     const { user } = useSelector((state) => state.user);
     let initialRouteName = 'login';
     if (user && user.uid) {
-        initialRouteName = 'heroList';
+        initialRouteName = 'manager';
     }
 
     function renderScreen({ key, name, component, options }) {
