@@ -4,7 +4,6 @@ import { Chip } from 'react-native-paper';
 
 import typography from '../../../theme/typography';
 
-import HeroAscension from './HeroAscension';
 import HeroSignatureItem from './HeroSignatureItem';
 
 function HeroItemStats(props) {
@@ -25,22 +24,16 @@ function HeroItemStats(props) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.rowStats}>
-                <HeroAscension playerInfo={playerInfo} />
-                <HeroSignatureItem
-                    hero={hero}
-                    playerInfo={playerInfo}
-                />
-            </View>
+            <HeroSignatureItem
+                hero={hero}
+                playerInfo={playerInfo}
+            />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 4,
-    },
-    rowStats: {
         flexDirection: 'row',
     },
     image: {

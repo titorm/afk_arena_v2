@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Avatar } from 'react-native-paper';
 
-import heroService from '../../../services/heroService';
+import colors from '../../../theme/colors/colors';
 
 import Icon from '../../Icon';
 
@@ -26,9 +25,9 @@ function HeroItemAscension(props) {
         return getAscencionStars().map((_, index) => (
             <Icon
                 key={index.toString()}
-                color='black'
+                color={colors.secondary}
                 name='star'
-                size={8}
+                size={12}
                 type='solid'
             />
         ));
@@ -36,29 +35,16 @@ function HeroItemAscension(props) {
 
     return (
         <View style={styles.container}>
-            <Avatar.Image
-                style={styles.image}
-                size={28}
-                source={heroService.getHeroAscension(playerInfo.ascension)}
-            />
-            <View style={styles.starsContainer}>
-                {getStars()}
-            </View>
+            {getStars()}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        width: 30,
-    },
-    image: {
-        backgroundColor: 'transparent',
-    },
-    starsContainer: {
-        flexDirection: 'row',
         marginTop: 4,
+        flexDirection: 'row',
+        justifyContent: 'center',
     },
 });
 
