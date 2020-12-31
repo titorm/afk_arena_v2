@@ -63,6 +63,7 @@ const icons = {
     comments_alt_dollar: 'comments-alt-dollar',
     compress_arrows_alt: 'compress-arrows-alt',
     copy: 'copy',
+    diamond: 'diamond',
     dollar_sign: 'dollar-sign',
     double_check: 'double-check',
     download: 'download',

@@ -120,11 +120,10 @@ const heroService = {
         return '';
     },
     getHeroAscension(ascension) {
-        if (ascension === 'ELITE' || ascension === 'ELITE_PLUS') return elite;
-        if (ascension === 'LEGENDARY' || ascension === 'LEGENDARY_PLUS') return legendary;
-        if (ascension === 'MYTHIC' || ascension === 'MYTHIC_PLUS') return mythic;
-        if (ascension === 'ASCENDED_0' || ascension === 'ASCENDED_1' || ascension === 'ASCENDED_2'
-            || ascension === 'ASCENDED_3' || ascension === 'ASCENDED_4' || ascension === 'ASCENDED_5') return ascended;
+        if (ascension.includes('ELITE')) return elite;
+        if (ascension.includes('LEGENDARY')) return legendary;
+        if (ascension.includes('MYTHIC')) return mythic;
+        if (ascension.includes('ASCENDED')) return ascended;
         return '';
     },
     getEquipment(heroType, equipType, acquired, tier) {
@@ -208,6 +207,12 @@ const heroService = {
             }
         }
         return '';
+    },
+    isSignatureAvailable(ascension) {
+        return ascension.includes('MYTHIC') || ascension.includes('ASCENDED');
+    },
+    isFurnitureAvailable(ascension) {
+        return ascension.includes('ASCENDED');
     },
 };
 

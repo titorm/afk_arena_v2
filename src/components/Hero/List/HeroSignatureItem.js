@@ -44,7 +44,7 @@ function HeroItemSignatureItem(props) {
             </View>
             <Avatar.Image
                 style={styles.image}
-                size={52}
+                size={56}
                 source={{ uri: hero.signatureItem.image }}
             />
         </View>
@@ -53,7 +53,6 @@ function HeroItemSignatureItem(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 16,
         alignItems: 'center',
         flexDirection: 'row',
     },

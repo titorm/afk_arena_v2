@@ -1,56 +1,87 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Avatar, Card } from 'react-native-paper';
+import { Avatar, Button, Card } from 'react-native-paper';
 
 import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 
+import Divider from '../../components/Divider';
 import HeroStats from '../../components/Hero/List/HeroStats';
 import HeroCategory from '../../components/Hero/List/HeroCategory';
+import HeroAscension from '../../components/Hero/List/HeroAscension';
+import HeroEquipment from '../../components/Hero/List/HeroEquipment';
 
 function HeroItem(props) {
     const { editHero, hero } = props;
     const { category, info, images, playerInfo } = hero;
 
+    const heroAcquired = hero.playerInfo && hero.playerInfo.ascension !== 'NONE';
+    const mythicHero = hero.playerInfo?.ascension === 'MYTHIC' || (hero.playerInfo?.ascension || '').includes('ASCENDED');
+
     return (
         <Card
-            style={styles.cardContainer}
+            style={styles.cardContainer(heroAcquired)}
             elevation={2}
-            onPress={() => editHero(hero.id)}
         >
             <View style={styles.container}>
-                <Avatar.Image
-                    size={64}
-                    theme={theme}
-                    source={{ uri: images.profile }}
-                />
+                <View>
+                    <Avatar.Image
+                        size={64}
+                        theme={theme}
+                        source={{ uri: images.profile }}
+                    />
+                    <HeroAscension playerInfo={playerInfo} />
+                </View>
                 <View style={styles.infoContainer}>
                     <Text style={styles.infoName}>{info.name}</Text>
                     <Text style={styles.infoTitle}>{info.title}</Text>
                     <HeroCategory category={category} />
                 </View>
-                <View style={styles.playerContainer}>
-                    <HeroStats
+            </View>
+            <Divider />
+            {heroAcquired && (
+                <>
+                    {mythicHero && (
+                        <>
+                            <HeroStats
+                                hero={hero}
+                                playerInfo={playerInfo}
+                            />
+                            <Divider />
+                        </>
+                    )}
+                    <HeroEquipment
                         hero={hero}
                         playerInfo={playerInfo}
                     />
-                </View>
-            </View>
+                    <Divider />
+                </>
+            )}
+            <Button
+                dark
+                color={colors.text}
+                style={styles.editButton}
+                labelStyle={styles.editLabel}
+                theme={theme}
+                onPress={() => editHero(hero.id)}
+            >
+                Edit
+            </Button>
         </Card>
     );
 }
 
 const styles = StyleSheet.create({
-    cardContainer: {
+    cardContainer: (heroAcquired) => ({
         margin: 4,
-        padding: 8,
-        backgroundColor: colors.white,
-    },
+        padding: 12,
+        backgroundColor: heroAcquired ? colors.white : colors.disabled,
+    }),
     container: {
         flex: 1,
-        flexDirection: 'row',
         alignItems: 'center',
+        flexDirection: 'row',
     },
     infoContainer: {
         flex: 1,
@@ -69,8 +100,12 @@ const styles = StyleSheet.create({
         textTransform: typography.textTransform.uppercase,
         color: colors.text,
     },
-    playerContainer: {
-        flex: 0.75,
+    editButton: {
+        alignSelf: 'flex-end',
+    },
+    editLabel: {
+        fontSize: typography.fontSize.overline,
+        fontFamily: typography.fontFamily.light,
     },
 });
 

@@ -27,7 +27,7 @@ function HeroItemAscension(props) {
                 key={index.toString()}
                 color={colors.secondary}
                 name='star'
-                size={12}
+                size={11}
                 type='solid'
             />
         ));
