@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Icon from 'react-native-fontawesome-pro';
 
 import colors from '../theme/colors/colors';
+
+import Icon from './Icon';
 
 function CustomCheckBox(props) {
     const { checked, onPress, style, title = '' } = props;

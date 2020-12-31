@@ -12,12 +12,6 @@
     "pod": "cd ios && pod install && cd .."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-brands-svg-icons": "^5.13.0",
-    "@fortawesome/pro-duotone-svg-icons": "^5.12.0",
-    "@fortawesome/pro-light-svg-icons": "^5.12.0",
-    "@fortawesome/pro-regular-svg-icons": "^5.12.0",
-    "@fortawesome/pro-solid-svg-icons": "^5.12.0",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.2",
@@ -29,7 +23,6 @@
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-elements": "^2.2.1",
-    "react-native-fontawesome-pro": "^2.1.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-paper": "^4.0.1",
     "react-native-reanimated": "^1.11.0",

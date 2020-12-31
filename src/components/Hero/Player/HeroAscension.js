@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
-import Icon from 'react-native-fontawesome-pro';
 
 import heroService from '../../../services/heroService';
+
+import Icon from '../../Icon';
 
 function HeroAscension(props) {
     const { playerInfo } = props;
