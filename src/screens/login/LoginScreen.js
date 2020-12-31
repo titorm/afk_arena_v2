@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import Firebase from 'firebase';
@@ -23,7 +23,7 @@ function LoginScreen(props) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: '',
+            title: 'Manager',
         });
     }, [navigation]);
 
@@ -79,12 +79,14 @@ function LoginScreen(props) {
                 behavior={isAndroid ? null : 'padding'}
                 style={styles.container}
             >
+                <View style={styles.divider} />
                 <Text style={styles.h3}>Login</Text>
+                <Text style={styles.h6}>Glad to see you here :)</Text>
                 <TextInput
                     style={styles.input}
                     mode='outlined'
                     autoCapitalize='none'
-                    label='email'
+                    label='Email'
                     keyboardType='email-address'
                     theme={theme}
                     onChangeText={setEmail}
@@ -94,7 +96,7 @@ function LoginScreen(props) {
                     style={styles.input}
                     mode='outlined'
                     autoCapitalize='none'
-                    label='password'
+                    label='Password'
                     theme={theme}
                     onChangeText={setPassword}
                 />
@@ -114,6 +116,7 @@ function LoginScreen(props) {
                 >
                     {!onCreate ? 'Create an Account' : 'Go to Login'}
                 </Button>
+                <View style={styles.divider} />
             </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     );
@@ -122,14 +125,22 @@ function LoginScreen(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.background,
         alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: colors.background,
+    },
+    divider: {
+        flex: 1,
     },
     h3: {
         fontSize: typography.fontSize.h3,
-        fontFamily: typography.fontFamily.thin,
-        textTransform: typography.textTransform.uppercase,
+        fontFamily: typography.fontFamily.light,
+        textTransform: typography.textTransform.none,
+        marginBottom: 12,
+    },
+    h6: {
+        fontSize: typography.fontSize.h6,
+        fontFamily: typography.fontFamily.light,
+        textTransform: typography.textTransform.none,
         marginBottom: 12,
     },
     input: {

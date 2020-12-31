@@ -16,6 +16,7 @@ import { configureFontAwesomePro } from 'react-native-fontawesome-pro';
 import Router from './routes/Router';
 
 import store from './store/store';
+import theme from './theme/theme';
 
 configureFontAwesomePro('light');
 
@@ -26,7 +27,9 @@ function App() {
                 loading={null}
                 persistor={store.persistor}
             >
-                <NavigationContainer>
+                <NavigationContainer
+                    theme={theme}
+                >
                     <Router />
                 </NavigationContainer>
             </PersistGate>
