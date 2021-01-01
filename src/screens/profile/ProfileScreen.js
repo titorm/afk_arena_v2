@@ -14,6 +14,14 @@ function ProfileScreen(props) {
 
     const dispatch = useDispatch();
 
+    function about() {
+        navigation.navigate('about');
+    }
+
+    function credits() {
+        navigation.navigate('credits');
+    }
+
     function logout() {
         Firebase.auth().signOut()
             .then(() => {
@@ -23,6 +31,10 @@ function ProfileScreen(props) {
                     routes: [{ name: 'login' }],
                 });
             });
+    }
+
+    function roadMap() {
+        navigation.navigate('road map');
     }
 
     function renderButton(label, onPress) {
@@ -45,9 +57,9 @@ function ProfileScreen(props) {
                 {renderButton('Sign-out', logout)}
                 <View style={styles.spacer} />
                 <Text style={styles.title}>Help</Text>
-                {renderButton('Road Map')}
-                {renderButton('About')}
-                {renderButton('Credits')}
+                {renderButton('Road Map', roadMap)}
+                {renderButton('About', about)}
+                {renderButton('Credits', credits)}
             </View>
         </View>
     );
