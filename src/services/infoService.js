@@ -43,11 +43,11 @@ const ascensionOptionList = [
     { value: 'MYTHIC', label: 'Mythic' },
     { value: 'MYTHIC_PLUS', label: 'Mythic +' },
     { value: 'ASCENDED_0', label: 'Ascended' },
-    { value: 'ASCENDED_1', label: 'Ascended 1*' },
-    { value: 'ASCENDED_2', label: 'Ascended 2*' },
-    { value: 'ASCENDED_3', label: 'Ascended 3*' },
-    { value: 'ASCENDED_4', label: 'Ascended 4*' },
-    { value: 'ASCENDED_5', label: 'Ascended 5*' },
+    { value: 'ASCENDED_1', label: 'Ascended - 1 Star' },
+    { value: 'ASCENDED_2', label: 'Ascended - 2 Stars' },
+    { value: 'ASCENDED_3', label: 'Ascended - 3 Stars' },
+    { value: 'ASCENDED_4', label: 'Ascended - 4 Stars' },
+    { value: 'ASCENDED_5', label: 'Ascended - 5 Stars' },
 ];
 
 export { factionOptionList, typeOptionList, classOptionList, roleOptionList, ascensionOptionList };

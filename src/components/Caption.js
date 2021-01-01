@@ -14,11 +14,11 @@ function Caption({ children, style }) {
 
 const styles = StyleSheet.create({
     caption: {
-        letterSpacing: typography.letterSpacing.caption,
+        color: colors.secondary,
         fontSize: typography.fontSize.caption,
-        fontFamily: typography.fontFamily.semiBold,
+        fontFamily: typography.fontFamily.medium,
+        letterSpacing: typography.letterSpacing.caption,
         textTransform: typography.textTransform.uppercase,
-        color: colors.primary,
     },
 });
 

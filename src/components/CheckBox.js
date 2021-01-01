@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import colors from '../theme/colors/colors';
@@ -16,8 +17,8 @@ function CustomCheckBox(props) {
         return (
             <Icon
                 name='check-square'
-                color={colors.primary}
-                type='regular'
+                color={colors.secondary}
+                type='solid'
             />
         );
     }
@@ -35,7 +36,7 @@ function CustomCheckBox(props) {
     return (
         <CheckBox
             title={title}
-            checkedColor={colors.primary}
+            checkedColor={colors.secondary}
             containerStyle={[styles.checkBoxContainer, style]}
             checked={checked}
             checkedIcon={checkedIcon()}
