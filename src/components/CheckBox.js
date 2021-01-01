@@ -11,7 +11,7 @@ import typography from '../theme/typography';
 import Icon from './Icon';
 
 function CustomCheckBox(props) {
-    const { checked, onPress, style, title = '' } = props;
+    const { checked, disabled = false, onPress, style, title = '' } = props;
 
     FontAwesome.loadFont();
 
@@ -19,7 +19,7 @@ function CustomCheckBox(props) {
         return (
             <Icon
                 name={icons.check_square}
-                color={colors.secondary}
+                color={disabled ? colors.disabled : colors.secondary}
                 type='solid'
             />
         );
@@ -44,7 +44,7 @@ function CustomCheckBox(props) {
     return (
         <CheckBox
             checked={checked}
-            checkedColor={colors.secondary}
+            checkedColor={disabled ? colors.disabled : colors.secondary}
             containerStyle={[styles.checkBoxContainer, style]}
             title={renderTitle()}
             checkedIcon={checkedIcon()}
