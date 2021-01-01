@@ -1,8 +1,10 @@
 import React, { useLayoutEffect } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Accordion } from 'native-base';
+import { Button } from 'react-native-paper';
 import PageHeader from '../../components/PageHeader';
 
+import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
 
@@ -14,6 +16,17 @@ function RoadMapScreen(props) {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: 'Manager',
+            headerRight: () => (
+                <Button
+                    dark
+                    color='white'
+                    labelStyle={styles.goBack}
+                    theme={theme}
+                    onPress={navigation.goBack}
+                >
+                    Go Back
+                </Button>
+            ),
         });
     }, [navigation]);
 
@@ -116,6 +129,10 @@ const styles = StyleSheet.create({
     },
     spacer: {
         marginTop: 24,
+    },
+    goBack: {
+        fontSize: typography.fontSize.overline,
+        fontFamily: typography.fontFamily.light,
     },
     caption: {
         color: colors.secondary,
