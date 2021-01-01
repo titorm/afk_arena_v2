@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import icons from '../utils/icons';
 import colors from '../theme/colors/colors';
+import typography from '../theme/typography';
 
 import Icon from './Icon';
 
@@ -16,7 +18,7 @@ function CustomCheckBox(props) {
     function checkedIcon() {
         return (
             <Icon
-                name='check-square'
+                name={icons.check_square}
                 color={colors.secondary}
                 type='solid'
             />
@@ -26,19 +28,25 @@ function CustomCheckBox(props) {
     function uncheckedIcon() {
         return (
             <Icon
-                name='square'
-                color='gray'
-                type='regular'
+                name={icons.square}
+                color={colors.text}
+                type='light'
             />
+        );
+    }
+
+    function renderTitle() {
+        return (
+            <Text style={styles.text}>{title}</Text>
         );
     }
 
     return (
         <CheckBox
-            title={title}
+            checked={checked}
             checkedColor={colors.secondary}
             containerStyle={[styles.checkBoxContainer, style]}
-            checked={checked}
+            title={renderTitle()}
             checkedIcon={checkedIcon()}
             uncheckedIcon={uncheckedIcon()}
             onPress={onPress}
@@ -54,6 +62,10 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         backgroundColor: 'transparent',
         paddingHorizontal: 0,
+    },
+    text: {
+        marginLeft: 4,
+        fontFamily: typography.fontFamily.medium,
     },
 });
 

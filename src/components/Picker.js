@@ -34,22 +34,22 @@ function CustomPicker(props) {
 
 const styles = StyleSheet.create({
     pickerStyle: {
+        minWidth: 175,
         marginTop: 4,
-        minWidth: 150,
-        justifyContent: 'center',
-        borderRadius: 8,
         borderWidth: 1,
         borderColor: '#00000099',
+        borderRadius: 8,
+        justifyContent: 'center',
     },
     pickerTextStyle: {
-        textAlign: 'center',
         color: colors.text,
+        textAlign: 'center',
     },
     disabledStyle: {
         borderColor: '#80808099',
     },
     textDisabledStyle: {
-        color: 'gray',
+        color: colors.disabled,
     },
 });
 
