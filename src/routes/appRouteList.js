@@ -5,6 +5,7 @@ import icons from '../utils/icons';
 import Icon from '../components/Icon';
 
 import HeroListScreen from '../screens/player/HeroListScreen';
+import ProfileScreen from '../screens/profile/ProfileScreen';
 
 const iconTab = (color, size, name) => (
     <Icon
@@ -22,7 +23,7 @@ const options = (title, icon) => ({
 
 const privateRouteList = [
     { key: 'heroList', name: 'heroList', component: HeroListScreen, options: options('Hero List', icons.bars) },
-    // { key: 'profile', name: 'profile', component: HeroListScreen, options: options('Profile', icons.user) },
+    { key: 'profile', name: 'profile', component: ProfileScreen, options: options('Profile', icons.user) },
 ];
 
 export default privateRouteList;
