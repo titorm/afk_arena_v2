@@ -1,23 +1,25 @@
+/* eslint-disable max-lines */
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
+import { Accordion } from 'native-base';
 import { Button } from 'react-native-paper';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Firebase from 'firebase';
 
 import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
 import typography from '../../theme/typography';
+import heroService from '../../services/heroService';
 import feedbackService from '../../services/feedbackService';
 
 import Loading from '../../components/Loading/Loading';
-import HeroSkins from '../../components/Hero/Player/HeroSkins';
-import HeroHeader from '../../components/Hero/Player/HeroHeader';
-import HeroAscension from '../../components/Hero/Player/HeroAscension';
-import HeroEditAscension from '../../components/Hero/Player/HeroEditAscension';
-import HeroEditEquipment from '../../components/Hero/Player/HeroEditEquipment';
-import HeroEditFurniture from '../../components/Hero/Player/HeroEditFurniture';
-import HeroEditSignatureItem from '../../components/Hero/Player/HeroEditSignatureItem';
+import PageHeader from '../../components/PageHeader';
+import HeroEditPlayerSkins from '../../components/Hero/Player/Skins/HeroEditPlayerSkins';
+import HeroEditPlayerEquipment from '../../components/Hero/Player/Equipment/HeroEditPlayerEquipment';
+import HeroEditPlayerFurniture from '../../components/Hero/Player/Furniture/HeroEditPlayerFurniture';
+import HeroEditPlayerGeneralData from '../../components/Hero/Player/GeneralData/HeroEditPlayerGeneralData';
 
 function HeroScreen(props) {
     const { route, navigation } = props;
@@ -26,6 +28,7 @@ function HeroScreen(props) {
     const { user } = useSelector((state) => state.user);
 
     const [hero, setHero] = useState({});
+    const [accordionItemList, setAccordionItemList] = useState([]);
 
     useEffect(() => {
         Ionicons.loadFont();
@@ -39,9 +42,59 @@ function HeroScreen(props) {
         }
     }, [user]);
 
+    useEffect(() => {
+        if (hero.id) {
+            const newItemList = [{
+                title: 'General Data',
+                content: (
+                    <HeroEditPlayerGeneralData
+                        hero={hero}
+                        updateAscension={updateHeroAscension}
+                        updateSignature={updateHeroSignatureItem}
+                        updateCrystal={updateHeroCrystal}
+                    />
+                ),
+            }, {
+                title: 'Equipment',
+                content: (
+                    <HeroEditPlayerEquipment
+                        hero={hero}
+                        update={updateHeroEquipment}
+                    />
+                ),
+            }];
+
+            if (heroService.isFurnitureAvailable(hero.playerInfo.ascension)) {
+                newItemList.push({
+                    title: 'Furniture',
+                    content: (
+                        <HeroEditPlayerFurniture
+                            hero={hero}
+                            update={updateHeroFurniture}
+                        />
+                    ),
+                });
+            }
+
+            if (hero.skins && hero.skins.length) {
+                newItemList.push({
+                    title: 'Skins',
+                    content: (
+                        <HeroEditPlayerSkins
+                            hero={hero}
+                            update={updateHeroSkins}
+                        />
+                    ),
+                });
+            }
+
+            setAccordionItemList(newItemList);
+        }
+    }, [hero]);
+
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: '',
+            title: 'Manager',
             headerRight: () => (
                 <Button
                     dark
@@ -69,10 +122,6 @@ function HeroScreen(props) {
         }
     }
 
-    function getUri(uri) {
-        return { uri };
-    }
-
     // This basically avoids undefined due older versions
     function formatData(data) {
         const newData = { ...data };
@@ -98,8 +147,8 @@ function HeroScreen(props) {
         updateHeroPlayerInfo(value, 'ascension');
     }
 
-    function updateHeroSignatureItem(value) {
-        updateHeroPlayerInfo(value, 'signatureItem');
+    function updateHeroCrystal() {
+        updateHeroPlayerInfo(!hero.playerInfo.onCrystal, 'onCrystal');
     }
 
     function updateHeroEquipment(newValue) {
@@ -112,6 +161,10 @@ function HeroScreen(props) {
 
     function updateHeroSkins(newValue) {
         updateHeroPlayerInfo(newValue, 'acquiredSkinList');
+    }
+
+    function updateHeroSignatureItem(value) {
+        updateHeroPlayerInfo(value, 'signatureItem');
     }
 
     function updateHeroPlayerInfo(newValue, property) {
@@ -128,7 +181,7 @@ function HeroScreen(props) {
                 feedbackService.showSuccessMessage('Hero updated successfully!');
                 navigation.reset({
                     index: 0,
-                    routes: [{ name: 'heroList' }],
+                    routes: [{ name: 'app' }],
                 });
             })
             .catch((error) => {
@@ -144,60 +197,56 @@ function HeroScreen(props) {
         );
     }
 
-    const { category, images, info, playerInfo } = hero;
+    const { info } = hero;
 
-    const imageBackgroundUri = getUri(images.art);
-    const bannerUri = getUri(images.banner);
+    function renderAccordionContent(item) {
+        const borderBottomWidth = item.hideBorderBottom ? 0 : 0.25;
+        return (
+            <View style={styles.contentContainer(borderBottomWidth)}>
+                {item.content}
+            </View>
+        );
+    }
+
+    function renderAccordionHeader(item, expanded) {
+        const borderBottomWidth = (expanded || item.hideBorderBottom) ? 0 : 0.25;
+        return (
+            <View style={styles.headerContainer(borderBottomWidth)}>
+                <Text style={styles.caption}>{item.title}</Text>
+            </View>
+        );
+    }
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <ImageBackground
-                style={styles.background}
-                source={imageBackgroundUri}
-                resizeMode='contain'
-            />
-            <ScrollView style={styles.scroll}>
-                <View style={styles.container}>
-                    <Text style={styles.h4}>{info.name}</Text>
-                    <Text style={styles.subtitle2}>{info.title}</Text>
-                    <HeroHeader
-                        bannerUri={bannerUri}
-                        category={category}
-                    />
-                    <HeroAscension playerInfo={playerInfo} />
-                    <View style={styles.rowContainer}>
-                        <HeroEditAscension
-                            hero={hero}
-                            update={updateHeroAscension}
+            <View style={styles.container}>
+                <View style={styles.subContainer}>
+                    <ScrollView style={styles.scroll}>
+                        <PageHeader
+                            title={info.name}
+                            subtitle={info.title}
                         />
-                        <HeroEditSignatureItem
-                            hero={hero}
-                            update={updateHeroSignatureItem}
+
+                        <Button
+                            mode='contained'
+                            width='50%'
+                            color={colors.secondary}
+                            theme={theme}
+                            style={styles.updateButton}
+                            onPress={update}
+                        >
+                            Update
+                        </Button>
+
+                        <Accordion
+                            dataArray={accordionItemList}
+                            style={styles.accordion}
+                            renderHeader={renderAccordionHeader}
+                            renderContent={renderAccordionContent}
                         />
-                    </View>
-                    <HeroEditEquipment
-                        hero={hero}
-                        update={updateHeroEquipment}
-                    />
-                    <HeroEditFurniture
-                        hero={hero}
-                        update={updateHeroFurniture}
-                    />
-                    <HeroSkins
-                        hero={hero}
-                        update={updateHeroSkins}
-                    />
-                    <Button
-                        mode='contained'
-                        width='90%'
-                        color={colors.secondary}
-                        theme={theme}
-                        onPress={update}
-                    >
-                        Update
-                    </Button>
+                    </ScrollView>
                 </View>
-            </ScrollView>
+            </View>
         </SafeAreaView>
     );
 }
@@ -213,42 +262,63 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    container: {
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        padding: 8,
-        paddingTop: 0,
-    },
     background: {
         position: 'absolute',
         opacity: 0.2,
         width: '100%',
         height: '100%',
     },
+    container: {
+        flex: 1,
+        padding: 4,
+        backgroundColor: colors.background,
+    },
+    subContainer: {
+        flex: 1,
+        borderRadius: 4,
+        backgroundColor: colors.white,
+        paddingVertical: 8,
+        paddingHorizontal: 4,
+    },
+    accordion: {
+        borderWidth: 0.25,
+        borderRadius: 4,
+    },
+    headerContainer: (borderBottomWidth) => ({
+        padding: 12,
+        borderRadius: 4,
+        borderBottomWidth,
+    }),
+    header: {
+        color: colors.secondary,
+        fontSize: typography.fontSize.caption,
+        fontFamily: typography.fontFamily.medium,
+        marginBottom: 8,
+        letterSpacing: typography.letterSpacing.caption,
+        textTransform: typography.textTransform.uppercase,
+    },
+    contentContainer: (borderBottomWidth) => ({
+        flex: 1,
+        marginTop: 4,
+        borderRadius: 4,
+        backgroundColor: colors.white,
+        borderBottomWidth,
+        paddingHorizontal: 12,
+    }),
+    caption: {
+        color: colors.secondary,
+        fontSize: typography.fontSize.caption,
+        fontFamily: typography.fontFamily.medium,
+        letterSpacing: typography.letterSpacing.caption,
+        textTransform: typography.textTransform.uppercase,
+    },
     goBack: {
         fontSize: typography.fontSize.overline,
         fontFamily: typography.fontFamily.light,
     },
-    h4: {
-        fontSize: typography.fontSize.h4,
-        fontFamily: typography.fontFamily.regular,
-        letterSpacing: typography.letterSpacing.h4,
-        color: colors.text,
-    },
-    subtitle2: {
-        fontSize: typography.fontSize.subtitle2,
-        fontFamily: typography.fontFamily.regular,
-        letterSpacing: typography.letterSpacing.subtitle2,
-        textAlign: 'center',
-        color: colors.text,
-        marginBottom: 8,
-    },
-    rowContainer: {
-        marginTop: 16,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    updateButton: {
+        alignSelf: 'center',
+        marginBottom: 16,
     },
 });
 
