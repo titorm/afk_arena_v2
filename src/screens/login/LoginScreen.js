@@ -65,7 +65,7 @@ function LoginScreen(props) {
     function navigateToHeroList() {
         navigation.reset({
             index: 0,
-            routes: [{ name: 'heroList' }],
+            routes: [{ name: 'app' }],
         });
     }
 

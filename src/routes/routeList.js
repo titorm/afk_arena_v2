@@ -33,7 +33,7 @@ const routeList = [
     // public
     { key: 'login', name: 'login', component: LoginScreen, options },
     // app
-    { key: 'app', name: 'manager', component: AppRouter, options },
+    { key: 'app', name: 'app', component: AppRouter, options },
     { key: 'hero', name: 'hero', component: HeroScreen, options },
 ];
 
