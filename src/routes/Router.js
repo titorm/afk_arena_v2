@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import FilterDrawer from './FilterDrawer';
+import MainRouter from './MainRouter';
 
 const Stack = createStackNavigator();
 
@@ -10,8 +10,8 @@ function Router() {
         <Stack.Navigator>
             <Stack.Screen
                 options={{ headerShown: false }}
-                name='filterDrawer'
-                component={FilterDrawer}
+                name='router'
+                component={MainRouter}
             />
         </Stack.Navigator>
     );

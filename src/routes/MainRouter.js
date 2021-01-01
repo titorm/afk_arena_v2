@@ -8,6 +8,7 @@ const Stack = createStackNavigator();
 
 function MainRouter() {
     const { user } = useSelector((state) => state.user);
+
     let initialRouteName = 'login';
     if (user && user.uid) {
         initialRouteName = 'app';

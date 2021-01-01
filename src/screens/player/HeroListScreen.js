@@ -47,9 +47,8 @@ function HeroListScreen(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        padding: 4,
         backgroundColor: colors.background,
-        paddingVertical: 8,
-        paddingHorizontal: 4,
     },
     subContainer: {
         flex: 1,

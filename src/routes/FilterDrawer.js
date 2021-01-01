@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import MainDrawer from './MainDrawer';
+import MainRouter from './MainRouter';
 import FilterDrawerContent from '../components/FilterDrawerContent';
 
 const Drawer = createDrawerNavigator();
@@ -13,8 +13,8 @@ function FilterDrawer() {
             drawerContent={(props) => <FilterDrawerContent {...props} />}
         >
             <Drawer.Screen
-                name='mainDrawer'
-                component={MainDrawer}
+                name='router'
+                component={MainRouter}
             />
         </Drawer.Navigator>
     );
