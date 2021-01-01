@@ -1,4 +1,5 @@
 const factionOptionList = [
+    { value: 'NONE', label: 'None' },
     { value: 'LIGHTBEARER', label: 'Lightbearer' },
     { value: 'MAULER', label: 'Mauler' },
     { value: 'WILDER', label: 'Wilder' },

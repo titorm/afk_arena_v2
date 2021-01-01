@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native';
 
 import colors from '../../theme/colors/colors';
 
-import HeroListContainer from './HeroListContainer';
 import PageHeader from '../../components/PageHeader';
+import HeroListContainer from './HeroListContainer';
 
 function HeroListScreen() {
     return (

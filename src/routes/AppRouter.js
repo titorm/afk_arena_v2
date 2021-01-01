@@ -1,5 +1,4 @@
-import React from 'react';
-// import { Platform } from 'react-native';
+import React, { useLayoutEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import colors from '../theme/colors/colors';
@@ -28,7 +27,15 @@ const optionsNavigation = {
     },
 };
 
-function AppRouter() {
+function AppRouter(props) {
+    const { navigation } = props;
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: 'Manager',
+        });
+    }, [navigation]);
+
     function renderScreen({ key, name, component, options }) {
         return (
             <Tab.Screen

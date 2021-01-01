@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Picker } from 'native-base';
 
 import colors from '../theme/colors/colors';
+import typography from '../theme/typography';
 
 function CustomPicker(props) {
     const { enabled = true, options = [], onValueChange, placeholder, selectedValue, style } = props;
@@ -19,7 +20,7 @@ function CustomPicker(props) {
 
     return (
         <Picker
-            mode='dropdown'
+            mode='dialog'
             enabled={enabled}
             style={[styles.pickerStyle, style, !enabled && styles.disabledStyle]}
             textStyle={[styles.pickerTextStyle, !enabled && styles.textDisabledStyle]}
@@ -34,7 +35,6 @@ function CustomPicker(props) {
 
 const styles = StyleSheet.create({
     pickerStyle: {
-        minWidth: 175,
         marginTop: 4,
         borderWidth: 1,
         borderColor: '#00000099',
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     pickerTextStyle: {
         color: colors.text,
         textAlign: 'center',
+        fontFamily: typography.fontFamily.regular,
     },
     disabledStyle: {
         borderColor: '#80808099',
