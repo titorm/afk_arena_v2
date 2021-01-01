@@ -68,6 +68,7 @@ const icons = {
     double_check: 'double-check',
     download: 'download',
     edit: 'edit',
+    ellipsis_v: 'ellipsis-v',
     envelope: 'envelope',
     envelope_open: 'envelope-open',
     exchange: 'exchange',
@@ -120,6 +121,7 @@ const icons = {
     money_check_edit_alt: 'money-check-edit-alt',
     paper_plane: 'paper-plane',
     pencil: 'pencil',
+    people_alt: 'people-alt',
     people_arrows: 'people-arrows',
     people_carry: 'people-carry',
     percentage: 'percentage',
@@ -174,6 +176,7 @@ const icons = {
     user_tag: 'user-tag',
     user_tie: 'user-tie',
     user_times: 'user-times',
+    users: 'users',
 
     // emoji
     angry: 'angry',

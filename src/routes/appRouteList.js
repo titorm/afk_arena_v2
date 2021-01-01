@@ -22,8 +22,8 @@ const options = (title, icon) => ({
 });
 
 const privateRouteList = [
-    { key: 'heroList', name: 'heroList', component: HeroListScreen, options: options('Hero List', icons.bars) },
-    { key: 'profile', name: 'profile', component: ProfileScreen, options: options('Profile', icons.user) },
+    { key: 'heroes', name: 'heroes', component: HeroListScreen, options: options('Heroes', icons.users) },
+    { key: 'more', name: 'more', component: ProfileScreen, options: options('More', icons.ellipsis_v) },
 ];
 
 export default privateRouteList;
