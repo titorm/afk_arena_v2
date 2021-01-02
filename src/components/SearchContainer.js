@@ -36,8 +36,8 @@ function HeroListContainer({ callback }) {
         }
     }, [data, sort]);
 
-    function change(event) {
-        const newData = { ...data, [event.target.name]: event.target.value };
+    function change(property, value) {
+        const newData = { ...data, [property]: value };
         setData(newData);
     }
 
@@ -55,6 +55,8 @@ function HeroListContainer({ callback }) {
                     style={styles.input}
                     label='Text'
                     theme={theme}
+                    value={data.text}
+                    onChangeText={(text) => change('text', text)}
                 />
             </View>
         </View>

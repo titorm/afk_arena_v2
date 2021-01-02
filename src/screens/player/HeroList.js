@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
+import filterService from '../../services/filterService';
 import objectService from '../../services/objectService';
 
 import Caption from '../../components/Caption';
 import HeroItem from './HeroItem';
-// import SearchContainer from '../../components/SearchContainer';
+import SearchContainer from '../../components/SearchContainer';
 
 function HeroList(props) {
     const { editHero, heroList } = props;
 
     const [filteredHeroList, setFilteredHeroList] = useState(heroList);
 
-    // eslint-disable-next-line no-unused-vars
     function changeFilter(filterState, sort) {
-        const text = filterState.text.toLowerCase();
-        const possibleHeroList = heroList.filter((hero) => {
-            const equalsText = !text || (hero.info.name.toLowerCase().includes(text) || hero.info.title.toLowerCase().includes(text));
-            const equalsFaction = filterState.faction === 'all' || hero.category.faction === filterState.faction;
-            const equalsType = filterState.type === 'all' || hero.category.type === filterState.type;
-            const equalsClass = filterState.class === 'all' || hero.category.class === filterState.class;
-            const equalsRole = filterState.role === 'all' || hero.category.role === filterState.role;
-
-            return equalsText && equalsFaction && equalsType && equalsClass && equalsRole;
-        });
+        const possibleHeroList = filterService.filterHeroList(heroList, filterState);
 
         possibleHeroList.sort((a, b) => {
             if (!sort.property || sort.property === '-') {
@@ -54,9 +45,9 @@ function HeroList(props) {
 
     return (
         <View style={styles.container}>
-            {/* <SearchContainer
+            <SearchContainer
                 callback={changeFilter}
-            /> */}
+            />
 
             <Caption style={styles.caption}>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
 
