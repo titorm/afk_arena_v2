@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Keyboard, SafeAreaView, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
@@ -11,16 +11,12 @@ import feedbackService from '../../services/feedbackService';
 
 import PageHeader from '../../components/PageHeader';
 
-function ProfileScreen(props) {
+function ChangePasswordScreen(props) {
     const { navigation } = props;
 
     const user = Firebase.auth().currentUser;
 
-    const [accountInfo, setAccountInfo] = useState({
-        email: '',
-        displayName: '',
-        photoURL: '',
-    });
+    const [newPassword, setNewPassword] = useState('');
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -39,23 +35,10 @@ function ProfileScreen(props) {
         });
     }, [navigation]);
 
-    useEffect(() => {
-        user.providerData.forEach((profile) => {
-            setAccountInfo({
-                email: profile.email,
-                displayName: profile.displayName || '',
-                photoURL: profile.photoURL || '',
-            });
-        });
-    }, [user]);
-
-    function updateAccountInfoField(field, newValue) {
-        setAccountInfo({ ...accountInfo, [field]: newValue });
-    }
-
-    function submitAccountInfo() {
-        user.updateProfile(accountInfo).then(() => {
-            feedbackService.showSuccessMessage('Account info updated successfully!');
+    function submit() {
+        user.updatePassword(newPassword).then(() => {
+            feedbackService.showSuccessMessage('Password updated successfully!');
+            setNewPassword('');
         }).catch((error) => {
             feedbackService.showErrorMessage(error.message);
         });
@@ -68,23 +51,16 @@ function ProfileScreen(props) {
             <View style={styles.container}>
                 <View style={styles.subContainer}>
                     <PageHeader
-                        title='Profile'
+                        title='Recover Password'
                     />
                     <TextInput
                         mode='outlined'
-                        label='Email'
+                        label='New Password'
                         style={styles.input}
                         theme={theme}
-                        value={accountInfo.email}
-                        disabled
-                    />
-                    <TextInput
-                        mode='outlined'
-                        label='Display Name'
-                        style={styles.input}
-                        theme={theme}
-                        value={accountInfo.displayName}
-                        onChangeText={(displayName) => updateAccountInfoField('displayName', displayName)}
+                        value={newPassword}
+                        secureTextEntry
+                        onChangeText={setNewPassword}
                     />
                     <Button
                         dark
@@ -95,9 +71,9 @@ function ProfileScreen(props) {
                         style={styles.update}
                         labelStyle={styles.updateLabel}
                         width='100%'
-                        onPress={submitAccountInfo}
+                        onPress={submit}
                     >
-                        Update Account Info
+                        Update Password
                     </Button>
                 </View>
                 <SafeAreaView />
@@ -146,4 +122,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ProfileScreen;
+export default ChangePasswordScreen;

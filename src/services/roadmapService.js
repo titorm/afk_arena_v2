@@ -1,22 +1,18 @@
 const nextFeats = {
     high: [
         'Statistics on hero player list, like heroes obtained, missing gear, etc',
-        'ADMIN: add field to input the hero furniture skill',
         'Bug fixing!',
     ],
     medium: [
         'Suggestion about how to reorganize gear to better match factions',
         'Calculate amount of sacrifice heroes necessary',
         'Artifact manager',
-        'Profile Page',
-        'Add a icon library to improve system layout',
     ],
     low: [
         'Sort Heroes faction by game order, not alphabetically',
         'Allow to input amount of copies obtained and show the amount remaining',
         'Share information about own heroes with other players',
         'Leaderboard and global comparison',
-        'ADMIN: warn heroes that miss information',
     ],
 };
 
