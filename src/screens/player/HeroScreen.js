@@ -179,10 +179,7 @@ function HeroScreen(props) {
         document.set({ heroList: newData })
             .then(() => {
                 feedbackService.showSuccessMessage('Hero updated successfully!');
-                navigation.reset({
-                    index: 0,
-                    routes: [{ name: 'app' }],
-                });
+                navigation.goBack();
             })
             .catch((error) => {
                 feedbackService.showErrorMessage(error);

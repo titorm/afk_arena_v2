@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Button, Card } from 'react-native-paper';
+import { useSelector } from 'react-redux';
+
+import Firebase from 'firebase';
 
 import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
@@ -16,10 +19,43 @@ function HeroItem(props) {
     const { editHero, hero } = props;
     const { category, info, images, playerInfo } = hero;
 
-    const heroAcquired = hero.playerInfo && hero.playerInfo.ascension !== 'NONE';
-    const mythicHero = (hero.playerInfo?.ascension || '').includes('MYTHIC') || (hero.playerInfo?.ascension || '').includes('ASCENDED');
+    const { user } = useSelector((state) => state.user);
 
-    const ascensionColor = getAscensionColor(hero.playerInfo.ascension);
+    const [playerInfoState, setPlayerInfoState] = useState(playerInfo);
+    const [heroInfo, setHeroInfo] = useState({
+        acquired: hero.playerInfo && hero.playerInfo.ascension !== 'NONE',
+        mythicOrAscended: (hero.playerInfo?.ascension || '').includes('MYTHIC') || (hero.playerInfo?.ascension || '').includes('ASCENDED'),
+        ascensionColor: getAscensionColor(hero.playerInfo.ascension),
+    });
+
+    let heroListener;
+
+    useEffect(() => {
+        heroListener = Firebase.firestore().collection('players').doc(user.uid)
+            .onSnapshot((doc) => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    if (data.heroList && data.heroList.length) {
+                        const playerInfoData = data.heroList.find(({ heroId }) => hero.id === heroId);
+                        setPlayerInfoState(playerInfoData);
+                    }
+                }
+            });
+
+        return () => {
+            if (heroListener) {
+                heroListener();
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        setHeroInfo({
+            acquired: playerInfoState && playerInfoState.ascension !== 'NONE',
+            mythicOrAscended: (playerInfoState?.ascension || '').includes('MYTHIC') || (playerInfoState?.ascension || '').includes('ASCENDED'),
+            ascensionColor: getAscensionColor(playerInfoState?.ascension),
+        });
+    }, [playerInfoState]);
 
     function getAscensionColor(ascension) {
         if (ascension.includes('ELITE')) {
@@ -39,19 +75,19 @@ function HeroItem(props) {
 
     return (
         <Card
-            style={styles.cardContainer(heroAcquired, heroAcquired ? 4 : 0, ascensionColor)}
+            style={styles.cardContainer(heroInfo.acquired, heroInfo.acquired ? 4 : 0, heroInfo.ascensionColor)}
             elevation={2}
         >
             <View style={styles.container}>
                 <View>
                     <Image
-                        style={styles.image(heroAcquired ? 4 : 0, ascensionColor)}
+                        style={styles.image(heroInfo.acquired ? 4 : 0, heroInfo.ascensionColor)}
                         theme={theme}
                         source={{ uri: images.profile }}
                     />
                     <HeroAscension
-                        ascensionColor={ascensionColor}
-                        playerInfo={playerInfo}
+                        ascensionColor={heroInfo.ascensionColor}
+                        playerInfo={playerInfoState}
                     />
                 </View>
                 <View style={styles.infoContainer}>
@@ -61,20 +97,20 @@ function HeroItem(props) {
                 </View>
             </View>
             <Divider />
-            {heroAcquired && (
+            {heroInfo.acquired && (
                 <>
-                    {mythicHero && (
+                    {heroInfo.mythicOrAscended && (
                         <>
                             <HeroStats
                                 hero={hero}
-                                playerInfo={playerInfo}
+                                playerInfo={playerInfoState}
                             />
                             <Divider />
                         </>
                     )}
                     <HeroEquipment
                         hero={hero}
-                        playerInfo={playerInfo}
+                        playerInfo={playerInfoState}
                     />
                     <Divider />
                 </>
