@@ -7,6 +7,7 @@ const icons = {
     menu: 'menu',
 
     // drawer items
+    analytics: 'analytics',
     angleDown: 'angle-down',
     angleLeft: 'angle-left',
     angleRight: 'angle-right',

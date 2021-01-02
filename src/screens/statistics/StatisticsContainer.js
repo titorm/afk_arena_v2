@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 import colors from '../../theme/colors/colors';
@@ -8,15 +7,19 @@ import typography from '../../theme/typography';
 import playerHeroService from '../../services/playerHeroService';
 
 import Loading from '../../components/Loading/Loading';
-import HeroList from './HeroList';
+import Statistics from './Statistics';
 
-function HeroListContainer() {
-    const navigation = useNavigation();
-
+function StatisticsContainer() {
     const [loading, setLoading] = useState(true);
     const [heroList, setHeroList] = useState([]);
 
     const { user } = useSelector((state) => state.user);
+
+    useEffect(() => {
+        if (user && user.uid) {
+            loadHeroList();
+        }
+    }, [user]);
 
     useEffect(() => {
         if (user && user.uid) {
@@ -29,19 +32,12 @@ function HeroListContainer() {
         setLoading(false);
     }
 
-    function editHero(heroId) {
-        navigation.navigate('hero', { heroId });
-    }
-
     if (loading) {
         return <Loading />;
     }
     return (
         <SafeAreaView style={styles.container}>
-            <HeroList
-                editHero={editHero}
-                heroList={heroList}
-            />
+            <Statistics heroList={heroList} />
         </SafeAreaView>
     );
 }
@@ -59,4 +55,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HeroListContainer;
+export default StatisticsContainer;

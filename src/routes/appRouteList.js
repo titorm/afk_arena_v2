@@ -6,6 +6,7 @@ import Icon from '../components/Icon';
 
 import MoreScreen from '../screens/more/MoreScreen';
 import HeroListScreen from '../screens/player/HeroListScreen';
+import StatisticsScreen from '../screens/statistics/StatisticsScreen';
 
 const iconTab = (color, size, name) => (
     <Icon
@@ -23,6 +24,7 @@ const options = (title, icon) => ({
 
 const privateRouteList = [
     { key: 'heroes', name: 'heroes', component: HeroListScreen, options: options('Heroes', icons.users) },
+    { key: 'statistics', name: 'statistics', component: StatisticsScreen, options: options('Statistics', icons.analytics) },
     { key: 'more', name: 'more', component: MoreScreen, options: options('More', icons.ellipsis_v) },
 ];
 
