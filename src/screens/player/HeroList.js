@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
+import objectService from '../../services/objectService';
+
 import Caption from '../../components/Caption';
 import HeroItem from './HeroItem';
-import objectService from '../../services/objectService';
-import SearchContainer from '../../components/SearchContainer';
+// import SearchContainer from '../../components/SearchContainer';
 
-// eslint-disable-next-line no-unused-vars
-function HeroList({ editHero, heroList }) {
+function HeroList(props) {
+    const { editHero, heroList } = props;
+
     const [filteredHeroList, setFilteredHeroList] = useState([]);
 
+    // eslint-disable-next-line no-unused-vars
     function changeFilter(filterState, sort) {
         const text = filterState.text.toLowerCase();
         const possibleHeroList = heroList.filter((hero) => {
@@ -51,9 +54,9 @@ function HeroList({ editHero, heroList }) {
 
     return (
         <View style={styles.container}>
-            <SearchContainer
+            {/* <SearchContainer
                 callback={changeFilter}
-            />
+            /> */}
 
             <Caption style={styles.caption}>{`Result (${filteredHeroList.length} of ${heroList.length})`}</Caption>
 
