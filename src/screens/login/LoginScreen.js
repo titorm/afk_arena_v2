@@ -1,15 +1,16 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import Firebase from 'firebase';
 
 import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
-import typography from '../../theme/typography';
 import feedbackService from '../../services/feedbackService';
 
 import { setUser } from '../../store/modules/user/actions';
+
+import PageHeader from '../../components/PageHeader';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -80,8 +81,10 @@ function LoginScreen(props) {
                 style={styles.container}
             >
                 <View style={styles.divider} />
-                <Text style={styles.h3}>Login</Text>
-                <Text style={styles.h6}>Glad to see you here :)</Text>
+                <PageHeader
+                    title='Login'
+                    subtitle='Glad to see you here :'
+                />
                 <TextInput
                     style={styles.input}
                     mode='outlined'
@@ -130,18 +133,6 @@ const styles = StyleSheet.create({
     },
     divider: {
         flex: 1,
-    },
-    h3: {
-        fontSize: typography.fontSize.h3,
-        fontFamily: typography.fontFamily.light,
-        textTransform: typography.textTransform.none,
-        marginBottom: 12,
-    },
-    h6: {
-        fontSize: typography.fontSize.h6,
-        fontFamily: typography.fontFamily.light,
-        textTransform: typography.textTransform.none,
-        marginBottom: 12,
     },
     input: {
         marginTop: 12,
