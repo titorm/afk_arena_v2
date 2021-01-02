@@ -8,10 +8,19 @@ import typography from '../theme/typography';
 function PageHeader(props) {
     const { title, subtitle } = props;
 
+    function renderSubtitle() {
+        if (!subtitle) {
+            return null;
+        }
+        return (
+            <Text style={styles.subtitle2}>{subtitle}</Text>
+        );
+    }
+
     return (
         <>
             <Text style={styles.h4}>{title}</Text>
-            <Text style={styles.subtitle2}>{subtitle}</Text>
+            {renderSubtitle()}
             <View style={styles.gradientContainer}>
                 <Svg
                     height='2'
