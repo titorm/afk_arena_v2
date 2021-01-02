@@ -10,7 +10,7 @@ import HeroItem from './HeroItem';
 function HeroList(props) {
     const { editHero, heroList } = props;
 
-    const [filteredHeroList, setFilteredHeroList] = useState([]);
+    const [filteredHeroList, setFilteredHeroList] = useState(heroList);
 
     // eslint-disable-next-line no-unused-vars
     function changeFilter(filterState, sort) {

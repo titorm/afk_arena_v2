@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Avatar, Button, Card } from 'react-native-paper';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { Button, Card } from 'react-native-paper';
 
 import theme from '../../theme/theme';
 import colors from '../../theme/colors/colors';
@@ -17,21 +17,42 @@ function HeroItem(props) {
     const { category, info, images, playerInfo } = hero;
 
     const heroAcquired = hero.playerInfo && hero.playerInfo.ascension !== 'NONE';
-    const mythicHero = hero.playerInfo?.ascension === 'MYTHIC' || (hero.playerInfo?.ascension || '').includes('ASCENDED');
+    const mythicHero = (hero.playerInfo?.ascension || '').includes('MYTHIC') || (hero.playerInfo?.ascension || '').includes('ASCENDED');
+
+    const ascensionColor = getAscensionColor(hero.playerInfo.ascension);
+
+    function getAscensionColor(ascension) {
+        if (ascension.includes('ELITE')) {
+            return colors.elite;
+        }
+        if (ascension.includes('LEGENDARY')) {
+            return colors.legendary;
+        }
+        if (ascension.includes('MYTHIC')) {
+            return colors.mythic;
+        }
+        if (ascension.includes('ASCENDED')) {
+            return colors.ascended;
+        }
+        return colors.white;
+    }
 
     return (
         <Card
-            style={styles.cardContainer(heroAcquired)}
+            style={styles.cardContainer(heroAcquired, heroAcquired ? 4 : 0, ascensionColor)}
             elevation={2}
         >
             <View style={styles.container}>
                 <View>
-                    <Avatar.Image
-                        size={64}
+                    <Image
+                        style={styles.image(heroAcquired ? 4 : 0, ascensionColor)}
                         theme={theme}
                         source={{ uri: images.profile }}
                     />
-                    <HeroAscension playerInfo={playerInfo} />
+                    <HeroAscension
+                        ascensionColor={ascensionColor}
+                        playerInfo={playerInfo}
+                    />
                 </View>
                 <View style={styles.infoContainer}>
                     <Text style={styles.infoName}>{info.name}</Text>
@@ -73,10 +94,19 @@ function HeroItem(props) {
 }
 
 const styles = StyleSheet.create({
-    cardContainer: (heroAcquired) => ({
+    cardContainer: (heroAcquired, borderLeftWidth, borderLeftColor) => ({
         margin: 4,
         padding: 12,
         backgroundColor: heroAcquired ? colors.white : colors.disabled,
+        borderLeftColor,
+        borderLeftWidth,
+    }),
+    image: (borderWidth, borderColor) => ({
+        width: 64,
+        height: 64,
+        borderColor,
+        borderWidth,
+        borderRadius: 32,
     }),
     container: {
         flex: 1,

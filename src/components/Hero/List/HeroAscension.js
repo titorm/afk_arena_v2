@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import colors from '../../../theme/colors/colors';
+import typography from '../../../theme/typography';
 
 import Icon from '../../Icon';
 
 function HeroItemAscension(props) {
-    const { playerInfo } = props;
+    const { ascensionColor, playerInfo } = props;
 
     const acquired = playerInfo.ascension && playerInfo.ascension !== 'NONE';
 
@@ -33,6 +34,14 @@ function HeroItemAscension(props) {
         ));
     }
 
+    if (playerInfo.ascension.includes('_PLUS')) {
+        return (
+            <View style={styles.plusContainer(ascensionColor)}>
+                <Text style={styles.plus(ascensionColor)}>+</Text>
+            </View>
+        );
+    }
+
     return (
         <View style={styles.container}>
             {getStars()}
@@ -46,6 +55,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
     },
+    plusContainer: (borderColor) => ({
+        left: 24,
+        width: 16,
+        height: 16,
+        bottom: -8,
+        padding: 0,
+        position: 'absolute',
+        alignItems: 'center',
+        borderColor,
+        borderWidth: 2,
+        borderRadius: 10,
+        justifyContent: 'center',
+        backgroundColor: colors.white,
+    }),
+    plus: (color) => ({
+        color,
+        fontSize: typography.fontSize.caption,
+        marginTop: -1,
+        fontFamily: typography.fontFamily.regular,
+        marginLeft: 0.5,
+    }),
 });
 
 export default HeroItemAscension;

@@ -25,7 +25,7 @@ function HeroListContainer() {
     }, [user]);
 
     async function loadHeroList() {
-        const { docs: adminDocs } = await Firebase.firestore().collection('heroes').get();
+        const { docs: adminDocs } = await Firebase.firestore().collection('heroes').orderBy('info.name', 'asc').get();
         const adminHeroList = adminDocs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
         const playerDoc = await Firebase.firestore().collection('players').doc(user.uid).get();

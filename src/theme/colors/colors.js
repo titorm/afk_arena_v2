@@ -17,7 +17,7 @@ const colors = {
     elite: '#663399',
     legendary: '#F4D03F',
     mythic: '#CF000F',
-    ascended: '#FFFFFF',
+    ascended: '#58CCBC',
 };
 
 export default colors;
