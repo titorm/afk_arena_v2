@@ -36,7 +36,7 @@ function CreditsScreen(props) {
                     subtitle='Who to blame'
                 />
                 <Text style={styles.about}>
-                    <Text style={styles.aboutBigger}>Tito, Jeff, Caio</Text>
+                    <Text style={styles.aboutBigger}>Phellipe, Jeff, Caio</Text>
                     {'\n'}
                     For all the help with the system itself and putting info into it!
                     {'\n\n\n'}

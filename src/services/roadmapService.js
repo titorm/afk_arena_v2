@@ -4,6 +4,7 @@ const nextFeats = {
         'Bug fixing!',
     ],
     medium: [
+        'Allow to filter heroes by faction, role, class and type',
         'Suggestion about how to reorganize gear to better match factions',
         'Calculate amount of sacrifice heroes necessary',
         'Artifact manager',
@@ -36,7 +37,7 @@ const versions = [
     // },
     {
         name: 'v1.0',
-        date: '31.12.2020',
+        date: '02.01.2021',
         released: [
             'Initial version. Basic functionalities.',
         ],
